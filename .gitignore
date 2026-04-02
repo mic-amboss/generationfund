@@ -1,0 +1,23 @@
+# Environment
+.env
+.venv/
+venv/
+__pycache__/
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.cursor/
+
+# Playwright CLI (auth state)
+.playwright-cli/
+
+# Obsidian (optional, uncomment to exclude from git)
+# src/.obsidian/
+
+# Sources (avoid large files)
+src/research/sources/

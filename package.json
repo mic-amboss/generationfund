@@ -1,0 +1,17 @@
+{
+  "name": "generationfund",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "extract-markdown": "tsx .claude/skills/research-company/scripts/extract-markdown.ts"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "jsdom": "^27.0.1",
+    "turndown": "^7.2.2"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "@types/turndown": "^5.0.5"
+  }
+}

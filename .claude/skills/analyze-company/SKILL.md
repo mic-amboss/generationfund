@@ -16,59 +16,32 @@ Source material must already exist in `src/research/sources/<company-slug>/` wit
 
 ### Step 1 — Survey available sources
 
-Read `src/research/sources/<company-slug>/sources.md` to understand what's available. Identify the most important documents for each section of the deep dive.
+Read `src/research/sources/<company-slug>/sources.md` to understand what's available. Assign sources to relevant subagents when or to main-context reading.
 
-### Step 2 — Extract information via sub-agents
+### Step 2 — Extract from heavy documents via sub-agents
 
-The source documents (especially annual reports and proxy filings) are long. Spawn sub-agents to read them and extract only the relevant information. This keeps the main context clean for synthesis.
+Spawn three sub-agents in parallel using the pre-defined agents in `.claude/agents/`. Each agent handles a distinct set of sources — no overlap between them.
 
-Spawn these extraction agents in parallel:
+| Agent | `subagent_type` | Sources to pass |
+|-------|-----------------|-----------------|
+| Proxy Reader | `proxy-reader` | All proxy statements (DEF 14A) |
+| Annual Report Reader | `annual-report-reader` | Glossy annual reports + 10-K filings |
+| Transcript Reader | `transcript-reader` | Earnings call + investor day transcripts |
 
-**Agent 1 — Business & Financials** (reads: annual reports, 10-Ks, investor day transcripts)
-Extract:
-- CEO/Chairman shareholder letters (full text — these reveal management thinking)
-- Business description and segment breakdown
-- Revenue, margin, and growth trajectory (5-year trend)
-- Capital allocation philosophy (dividends, buybacks, acquisitions, reinvestment)
-- Key strategic initiatives and how they've evolved
-- Competitive position as described by management
+When spawning each agent, include the list of source file paths (full paths) in the prompt so the agent knows which files to read.
 
-**Agent 2 — People & Governance** (reads: proxy filings, annual reports, company website via sources)
-Extract:
-- Full board of directors: name, role, age, tenure, committee memberships, other current/previous notable roles, background
-- Full executive team: name, title, tenure, background, previous roles
-- CEO/Chairman history — who held the role, when, transitions
-- Compensation structure: base, bonus, equity, performance metrics, any unusual arrangements
-- Board stock ownership requirements or guidelines
-- Any notable departures, additions, or governance changes in last 5 years
-- Founder/family involvement and succession dynamics
+Each agent returns a structured markdown summary with `[filename, p. X-Y]` citations. Use these citations to spot-check specific pages in Step 4 if anything needs more depth or verification.
 
-**Agent 3 — Ownership & Transactions** (reads: proxy filings, analysis, fund letters, news)
-Extract:
-- Insider ownership: who owns what, changes over time
-- Family/founder stakes
-- Institutional holders — especially long-term fundamental investors and any activists
-- Notable fund managers who have written about the company and their thesis
-- Significant insider buying/selling patterns
-- Any notable corporate transactions (acquisitions, divestitures, spinoffs)
+### Step 3 — Read analysis and fund letters in main context
 
-**Agent 4 — Culture & Peculiarities** (reads: all sources, especially transcripts, analysis, fund letters)
-Extract:
-- Distinctive management practices or cultural elements
-- Unusual compensation or incentive structures
-- Anything that makes this company different from peers
-- Recurring themes across shareholder letters
-- What long-term investors highlight as special about this business
-- Management quotes that reveal philosophy or character
-- Red flags or concerns raised by analysts/investors
+Third-party analysis, fund letters, and news are compact markdown files (5-40K each) and high-signal. Read them directly in the main context:
+- Substack posts, SA deep dives, VIC writeups — outside perspectives, including critical ones
+- Fund letters — what long-term investors highlight as special (or concerning), these are often the most insightful sources
+- News articles — recent developments and corporate actions
 
-Each agent should return a structured markdown summary with specific facts, names, numbers, and direct quotes where relevant. Instruct agents to cite which source document each piece of information comes from.
+After reading, note any claims or details worth verifying against the primary sources. Use the sub-agent citations to spot-check specific pages where needed.
 
-### Step 3 — Read analysis and transcripts directly
-
-High-value sources should be read in the main context directly:
-- Third-party analysis (Substack posts, SA deep dives, VIC writeups) — these often give a good overview and might include unique insights and opinions, also critical ones
-- Fund letters mentioning the company — these often contain the sharpest assessments
+If the subagent found shareholder letters from the CEO or chairman, consider re-reading them as part of the main context, these are very valuable sources for understanding management thinking and priorities.
 
 ### Step 4 — Write the deep dive
 
@@ -85,7 +58,6 @@ Writing guidance:
 - The "People" section is the heart of this document — detailed portraits of the key 5-10 people who shaped the company, plus an overview table of all directors and officers
 - The "Unique Insights" section is what makes this deep dive valuable — Peel out the specifics about this company and it's people, how do they think, what do they value, what do they do differently than others? - the things you'd only learn by reading the primary sources carefully
 - Cite sources inline using markdown links (e.g. "[2024 Annual Report](src/research/sources/<company-slug>/ir/2024-annual-report.pdf)") so the reader can dig deeper
-- 
 
 ### Step 5 — Review and refine
 

@@ -11,17 +11,18 @@ Extract structured information from earnings call and investor day transcripts f
 
 ## Reading Strategy
 
-Transcripts are markdown files, so they're already relatively efficient to read. However, they can be long (30-50K for earnings calls, 200K+ for investor days).
+You will receive 2-3 earnings call transcripts and possibly an investor day transcript. Transcripts are markdown files but can be very long (30-50K for earnings calls, 200K+ for investor days).
 
-1. For **earnings calls**: read the prepared remarks section in full. For the Q&A section, skim for substantive analyst questions and management responses — skip routine guidance clarifications.
-2. For **investor day** transcripts: these are very long but high-value. Read the CEO/executive presentations in full. Skim breakout sessions for unique details not covered in the main presentations.
-3. Read the **most recent 2-3 calls** in detail. For older calls, focus on how themes evolved and any notable shifts.
+1. **Most recent earnings call** Read the prepared remarks in full. Skim the Q&A for substantive analyst questions and management responses — skip routine guidance clarifications.
+2. **Older calls**: only scan for theme evolution and notable shifts — don't read in full.
+3. **Investor day**: read CEO/executive presentations. Skip breakout sessions unless they cover topics not in the main presentations.
+4. Use the read tool's `limit` and `offset` parameters to read sections, not entire files. Start by reading the first 100 lines to understand the structure, then target specific sections.
 
 ## What to Extract
 
 ### Strategic Themes
 - What does management talk about most? What are their priorities?
-- How have these themes evolved across calls? (e.g. "technology" becoming more prominent over time)
+- How have these themes evolved across calls?
 - What does management explicitly say about competitive advantages and moat?
 
 ### Management Character
@@ -58,3 +59,7 @@ Transcripts are markdown files, so they're already relatively efficient to read.
 Return a structured markdown summary organized by the sections above. For every quote or fact, cite the source: `[filename]` (with approximate location if notable, e.g. "CEO prepared remarks" or "Q&A with analyst X").
 
 Prioritize direct quotes over paraphrasing — the main agent needs the CEO's actual words, not a summary of what they said.
+
+## Output Budget
+
+Keep your total output under **400 lines**. Focus on the most revealing quotes and themes. Use bullet points, not paragraphs. One strong quote per theme beats three mediocre ones.

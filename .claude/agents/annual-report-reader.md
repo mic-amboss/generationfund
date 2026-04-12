@@ -11,29 +11,23 @@ Extract structured information from shareholder letters and annual reports for a
 
 ## Reading Strategy
 
-1. Read the table of contents first to locate sections
-2. Use the read tool's `pages` parameter to read only relevant sections — never read the full document
-3. **Shareholder letters**: read all shareholder letters in detail, these are the most valuable source for understanding management thinking and priorities.
-4. **Glossy annual reports**: if included, the shareholder letter is the most valuable part (usually first 5-10 pages). Read it in full. Skim the rest for visuals, strategic highlights, or data not in the 10-K.
-5. **10-K filings**: Skip if you already read the glossy annual report. If not, read the **most recent** 10-K filing in detail and skim **older** years mostly for notable changes. Focus on these sections:
-   - Business description (Item 1) — first 20-30 pages
-   - Financial data (Item 6 / Selected Financial Data) — usually a compact summary table
-   - MD&A (Item 7) — revenue drivers, segment performance, margin discussion
-   Skip long low value sections: risk factors, legal proceedings, mine safety disclosures, exhibits, full financial statements (the summary data is enough).
+You will receive 2-3 glossy annual reports (no 10-Ks — those are excluded when a glossy report exists for the same year). Be surgical with page reads.
+
+1. Read the **table of contents** first (usually among first pages) to locate section page numbers
+2. Use the read tool's `pages` parameter to jump directly to relevant sections — **never read the full document**
+3. **Shareholder letters** are the highest value source and, thus, should be read in the main context. Provide exact pointers to the pages, don't reproduce the text.
+4. **Business overview** (usually among the first pages, before the financials) — read in full for the most recent report, skim for older ones.
+5. **Financial summary tables** — find and extract the consolidated multi-year data. Usually a 1-2 page spread.
+6. **Skip entirely**: risk factors, legal proceedings, full financial statements, ESG disclosures, audit reports, exhibits.
 
 ## What to Extract
 
 ### Shareholder Letters
-- Full text of the most recent 2-3 letters (these reveal management thinking and priorities)
-- Key themes and recurring ideas from older letters
-- Tone shifts — is management getting more optimistic, cautious, or defensive over time?
-- Direct quotes that are particularly revealing
+Those are the highest value source for understanding management thinking and priorities. Thus, they should be read in the main context. Provide exact pointers to each letter with its **exact file and page range** (e.g. `[2024-annual-report.pdf, p. 2-7]`) so the main agent can read them directly. Don't read them in this agent.
 
 ### Business Description
-- What the company does, in specific terms
-- Segment breakdown with revenue/profit contribution
-- Customer types and concentration
-- Geographic footprint
+- What the company does, how it actually makes money, be specific.
+- Segment/Customer/Geography breakdown with revenue/profit contribution if available.
 - How the business has evolved over the period covered
 
 ### Financial Overview
@@ -60,4 +54,8 @@ A 5-year summary table with:
 
 Return a structured markdown summary organized by the sections above. For every fact, include a citation: `[filename, p. X]` or `[filename, p. X-Y]`.
 
-Include the shareholder letters in full or near-full — they're the primary source for understanding management thinking. Summarize everything else.
+For shareholder letters: return pointers (file + page range), not the text — the main agent will read them directly. For everything else: concise structured summaries.
+
+## Output Budget
+
+Keep your total output under **300 lines**. Since shareholder letters are passed as pointers (not reproduced), the budget goes to business description, financials, and capital allocation. Use a single consolidated table for financial data rather than repeating from each report. Use bullet points for everything else.

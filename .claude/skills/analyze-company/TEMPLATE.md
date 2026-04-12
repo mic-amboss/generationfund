@@ -1,7 +1,12 @@
-# [Company Name] ([Ticker]) — Deep Dive
+---
+tags:
+  - deep-dive
+  - company
+created: [YYYY-MM-DD]
+updated: [YYYY-MM-DD]
+---
 
-> Last updated: [date]
-> Sources: [number] documents from `src/research/sources/[slug]/`
+# [Company Name] — Deep Dive
 
 ---
 

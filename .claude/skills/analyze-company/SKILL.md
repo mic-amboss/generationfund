@@ -12,36 +12,55 @@ Read all collected source material for a company and synthesize it into a struct
 
 Source material must already exist in `src/research/sources/<company-slug>/` with a `sources.md` index (collected via the `research-company` skill). If sources haven't been collected yet, tell the user and offer to run research first.
 
+## Token Efficiency
+
+Context budget is the binding constraint. Every file read and every line of agent output costs tokens. Be deliberate:
+- **Less is more** — a focused read of the right 5 pages beats skimming 50
+- **Curate, don't dump** — pick the highest-signal sources for each agent, don't pass everything
+- **Agents summarize, main context synthesizes** — agents should return concise structured summaries, not raw extracts
+
 ## Workflow
 
-### Step 1 — Survey available sources
+### Step 1 — Survey and curate sources
 
-Read `src/research/sources/<company-slug>/sources.md` to understand what's available. Assign sources to relevant subagents when or to main-context reading.
+Read `src/research/sources/<company-slug>/sources.md` to understand what's available. Then **curate** which sources go to each agent — don't pass everything.
+
+**Source selection rules:**
+- **Skip 10-Ks when glossy annual reports exist** for the same year — the glossy report contains the shareholder letter + business highlights, which is what we need. The 10-K adds little incremental value.
+- **Cap documents per agent** — each agent should receive only what it can meaningfully process:
+  - Proxy reader: most recent proxy + 1 older proxy (for change detection)
+  - Annual report reader: 2-3 most recent glossy annual reports, 10-K only when there is no glossy annual report available
+  - Transcript reader: 2-3 most recent earnings calls + investor day (if available)
+  - News reader: company press releases and third-party news articles with interesting headlines only.
+- **Shareholder letters and analysis stay in main context** — these are compact and high-signal, no need for sub-agents.
 
 ### Step 2 — Extract from heavy documents via sub-agents
 
-Spawn three sub-agents in parallel using the pre-defined agents in `.claude/agents/`. Each agent handles a distinct set of sources — no overlap between them.
+Spawn four sub-agents in parallel using the pre-defined agents in `.claude/agents/`. Each agent handles a distinct, curated set of sources — no overlap.
 
 | Agent | `subagent_type` | Sources to pass |
 |-------|-----------------|-----------------|
-| Proxy Reader | `proxy-reader` | All proxy statements (DEF 14A) |
-| Annual Report Reader | `annual-report-reader` | Glossy annual reports + 10-K filings |
-| Transcript Reader | `transcript-reader` | Earnings call + investor day transcripts |
+| Proxy Reader | `proxy-reader` | Most recent proxy + 1 older proxy |
+| Annual Report Reader | `annual-report-reader` | 2-3 most recent glossy annual reports (no 10-Ks) |
+| Transcript Reader | `transcript-reader` | 2-3 most recent earnings calls + investor day |
+| News Reader | `news-reader` | Company News, third-party news articles |
 
-When spawning each agent, include the list of source file paths (full paths) in the prompt so the agent knows which files to read.
+When spawning each agent, include the **full file paths** of only the curated sources in the prompt.
 
 Each agent returns a structured markdown summary with `[filename, p. X-Y]` citations. Use these citations to spot-check specific pages in Step 4 if anything needs more depth or verification.
 
 ### Step 3 — Read analysis and fund letters in main context
 
-Third-party analysis, fund letters, and news are compact markdown files (5-40K each) and high-signal. Read them directly in the main context:
-- Substack posts, SA deep dives, VIC writeups — outside perspectives, including critical ones
-- Fund letters — what long-term investors highlight as special (or concerning), these are often the most insightful sources
-- News articles — recent developments and corporate actions
+In the main context, read only the high-signal sources firsthand:
 
-After reading, note any claims or details worth verifying against the primary sources. Use the sub-agent citations to spot-check specific pages where needed.
+- **Shareholder letters** — the most valuable primary source for understanding management thinking and priorities
+- **Fund letters** — what long-term investors highlight as special (or concerning), often the most insightful sources
+- **VIC writeups** — detailed, thesis-driven analysis from experienced investors
+- **Deep Substack posts** — thorough independent analysis
 
-If the subagent found shareholder letters from the CEO or chairman, consider re-reading them as part of the main context, these are very valuable sources for understanding management thinking and priorities.
+After reading, note claims worth verifying against primary sources. Use sub-agent citations to spot-check specific pages.
+
+The annual-report-reader will return **pointers** to shareholder letters (file + page range) rather than reproducing them. Read these pages directly in the main context — shareholder letters are the most valuable primary source for understanding management thinking and should be read firsthand, not through a summary.
 
 ### Step 4 — Write the deep dive
 
@@ -52,12 +71,13 @@ src/research/output/<company-slug>/deep-dive.md
 ```
 
 Writing guidance:
+- Fill in the YAML frontmatter: `tags` (always include `deep-dive` and `company/<slug>`, add `sector/<sector>` based on the business), `date` (today), `ticker`
 - Write with conviction. State what the evidence shows, don't hedge everything with "appears to" and "seems to"
 - Use specific numbers, dates, and names — vague summaries are useless
 - Include direct quotes from shareholder letters and transcripts when they reveal management thinking
 - The "People" section is the heart of this document — detailed portraits of the key 5-10 people who shaped the company, plus an overview table of all directors and officers
 - The "Unique Insights" section is what makes this deep dive valuable — Peel out the specifics about this company and it's people, how do they think, what do they value, what do they do differently than others? - the things you'd only learn by reading the primary sources carefully
-- Cite sources inline using markdown links (e.g. "[2024 Annual Report](src/research/sources/<company-slug>/ir/2024-annual-report.pdf)") so the reader can dig deeper
+- Cite sources inline using **relative** markdown links from the output file's location (e.g. `[2024 Annual Report](../../sources/<company-slug>/ir/2024-annual-report.pdf)`) so links work in Obsidian and other markdown readers
 
 ### Step 5 — Review and refine
 

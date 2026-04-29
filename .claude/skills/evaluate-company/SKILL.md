@@ -92,7 +92,7 @@ Be honest. Three out of four criteria is a pass.
 
 ### Step 7 — Write the evaluation file
 
-Save to `src/research/companies/<company-slug>/output/evaluation.md` using the template at `.claude/skills/evaluate-company/TEMPLATE.md`.
+Save to `src/research/companies/<company-slug>/output/thesis.md` using the template at `.claude/skills/evaluate-company/TEMPLATE.md`.
 
 Writing guidance:
 
@@ -118,7 +118,7 @@ Then present a one-paragraph summary to the user (verdict + position-size recomm
 
 This skill is also the right tool for **quarterly thesis review** of an existing holding. In that mode:
 
-- Read the prior `evaluation.md` first
+- Read the prior `thesis.md` first
 - Re-score against the latest filings and transcripts
 - Note score drift item-by-item — drift is what catches a deteriorating thesis
-- Save the new evaluation as `evaluation-YYYY-QN.md` (preserve history)
+- Save the new thesis as `thesis-YYYY-QN.md` (preserve history)

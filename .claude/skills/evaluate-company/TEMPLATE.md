@@ -1,6 +1,6 @@
 ---
 tags:
-  - evaluation
+  - thesis
   - company/[slug]
 created: [YYYY-MM-DD]
 updated: [YYYY-MM-DD]
@@ -9,7 +9,7 @@ verdict: [Generational candidate / Quality but sub-generational / Watchlist / Pa
 recommended_position: [Initial X% / Watchlist / N/A]
 ---
 
-# [Company Name] — Evaluation
+# [Company Name] — Thesis
 
 ## Executive verdict
 
@@ -126,4 +126,4 @@ What couldn't be verified from available sources, and what additional research w
 
 ---
 
-*This evaluation does not replace the red-team / pre-mortem (`red-team-company`). A "Generational candidate" verdict here only authorizes proceeding to red-team, not to capital deployment.*
+*This thesis does not replace the red-team / pre-mortem (`red-team-company` → `premortem.md`). A "Generational candidate" verdict here only authorizes proceeding to the pre-mortem, not to capital deployment.*

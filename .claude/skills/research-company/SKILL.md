@@ -10,15 +10,17 @@ Collect high-quality source material on a company for investment research. Searc
 
 ## Directory Structure
 
-All sources go into `src/research/sources/<company-slug>/` where `<company-slug>` is a lowercase, hyphenated name (e.g. `berkshire-hathaway`, `constellation-software`).
+All sources go into `src/research/companies/<company-slug>/sources/` where `<company-slug>` is a lowercase, hyphenated name (e.g. `berkshire-hathaway`, `constellation-software`).
 
 ```
-src/research/sources/<company-slug>/
-├── sources.md              # Index of all collected sources
-├── ir/                     # Investor relations materials (PDFs)
-├── transcripts/            # Earnings call transcripts
-├── analysis/               # Third-party analysis and writeups
-└── news/                   # News articles and investigative reports
+src/research/companies/<company-slug>/
+├── sources/
+│   ├── sources.md          # Index of all collected sources
+│   ├── ir/                 # Investor relations materials (PDFs)
+│   ├── transcripts/        # Earnings call transcripts
+│   ├── analysis/           # Third-party analysis and writeups
+│   └── news/               # News articles and investigative reports
+└── output/                 # Deep-dives produced by analyze-company
 ```
 
 ## Source Hierarchy
@@ -57,7 +59,7 @@ Use `WebSearch` for initial discovery, then navigate directly to collect.
 Materials on IR websites (sometimes also fund letters and reports) are typically available as PDFs. Download directly:
 
 ```bash
-curl -L -o src/research/sources/<company-slug>/ir/<filename>.pdf "<url>"
+curl -L -o src/research/companies/<company-slug>/sources/ir/<filename>.pdf "<url>"
 ```
 
 ### Web Pages (articles, transcripts, writeups)
@@ -82,7 +84,7 @@ Use `playwright-cli -s=research snapshot` to verify the page loaded correctly an
 **Step 2 — Save as PDF:**
 
 ```bash
-playwright-cli -s=research pdf > src/research/sources/<company-slug>/<subfolder>/<filename>.pdf
+playwright-cli -s=research pdf > src/research/companies/<company-slug>/sources/<subfolder>/<filename>.pdf
 ```
 
 **Step 3 — Extract HTML and convert to markdown:**
@@ -94,7 +96,7 @@ playwright-cli -s=research eval "document.documentElement.outerHTML" > /tmp/page
 # Convert to clean markdown using the bundled script
 npx tsx .claude/skills/research-company/scripts/extract-markdown.ts \
   /tmp/page.html \
-  src/research/sources/<company-slug>/<subfolder>/<filename>.md \
+  src/research/companies/<company-slug>/sources/<subfolder>/<filename>.md \
   --url="<source-url>"
 ```
 

@@ -19,5 +19,7 @@ Thumbs.db
 # Obsidian (optional, uncomment to exclude from git)
 # src/.obsidian/
 
-# Sources (avoid large files)
-src/research/sources/
+# Sources (avoid large files — collected research material per entity)
+src/research/companies/*/sources/
+src/research/industries/*/sources/
+src/research/frameworks/

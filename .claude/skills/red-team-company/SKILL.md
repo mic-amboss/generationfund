@@ -53,7 +53,7 @@ For every ❓ and every borderline ✗, verify against primary sources. Two path
 |-------|----------------------------|
 | `proxy-reader` | Related-party flows, family-officer overlap, supervoting structure, insider compensation, controlled-company exemption |
 | `annual-report-reader` | Cash flow vs. NI divergence, off-balance-sheet items, SBC trajectory, working-capital deterioration, goodwill/intangibles |
-| `transcript-reader` | Management forthrightness on hard questions, missed guidance, evasion patterns, drift in language over time |
+| `transcript-reader` | Management forthrightness on hard questions, missed guidance, evasion patterns, drift in language over time. Can be invoked for earnings transcripts and podcast interviews. Specify the format in the prompt. |
 | `news-reader` | Restatements, regulatory action, prior-company red flags on executives, short-seller reports |
 
 Pass **narrow, targeted prompts** focused on the specific red flag — not a comprehensive re-extraction.

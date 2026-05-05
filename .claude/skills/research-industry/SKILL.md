@@ -22,6 +22,7 @@ src/research/industries/<industry-slug>/
 │   ├── reports/            # Sell-side primers, consulting deep-dives, trade-association data
 │   ├── vc-maps/            # Sequoia, Bessemer, a16z, USV market maps and thematic essays
 │   ├── investor-letters/   # Quality-investor commentary on this industry
+│   ├── podcasts/           # Long-form podcast interviews on industry structure (Colossus, TIP)
 │   ├── leading-players/    # Annual reports / shareholder letters of top 3-5 incumbents (for cross-comparison)
 │   └── trade-press/        # Industry trade publications and investigative reporting
 └── output/                 # Industry deep-dives produced by analyze-industry
@@ -33,19 +34,21 @@ Search and collect material from these sources, roughly in order of importance f
 
 1. **Quality-investor letters discussing the industry** — Buffett's Berkshire letters, Akre, Sleep & Zakaria (Nomad), Terry Smith (Fundsmith), Tom Gayner (Markel), Chuck Akre, David Poppe (Giverny), Pat Dorsey, Sequoia Fund, Capital Group letters. These are the *highest-signal* source for understanding what makes an industry a compounder factory — they apply diagnostic instinct earned over decades.
 
-2. **Academic & moat frameworks applied to this industry** — Michael Mauboussin papers (Measuring the Moat, Base Rate Book, Capital Allocation, ROIC and Intangible Assets), Aswath Damodaran sector data, Hamilton Helmer's 7 Powers analyses, Pat Dorsey's Five Rules sector chapters.
+2. **Long-form podcast interviews on industry structure** — Colossus's *Business Breakdowns* episodes are essentially industry primers in podcast form (each is a 60-90 minute structured deconstruction of a single company that illuminates the underlying industry). *Invest Like the Best* episodes with quality investors and operators discussing a sector are equally high-signal. The Investors Podcast Network's podcasts often feature industry-level discussions with investors who own multiple names in a vertical.
 
-3. **Sell-side industry primers** — Bernstein "Black Books" (when available), initiation reports, sector primers from Goldman, Morgan Stanley, Stifel, William Blair, Baird. The structural skeleton + sector-specific accounting.
+3. **Academic & moat frameworks applied to this industry** — Michael Mauboussin papers (Measuring the Moat, Base Rate Book, Capital Allocation, ROIC and Intangible Assets), Aswath Damodaran sector data, Hamilton Helmer's 7 Powers analyses, Pat Dorsey's Five Rules sector chapters.
 
-4. **VC market maps & thematic essays** — Sequoia "Market Maps," Bessemer "Roadmaps" + "State of the Cloud," a16z "Big Ideas" + thematic essays, Union Square Ventures "Thesis," NZS Capital "Complexity Investing." For evolving industries.
+4. **Sell-side industry primers** — Bernstein "Black Books" (when available), initiation reports, sector primers from Goldman, Morgan Stanley, Stifel, William Blair, Baird. The structural skeleton + sector-specific accounting.
 
-5. **Consulting deep-dives** — McKinsey, BCG, Bain industry insights — for value-chain decomposition and profit-pool analysis. Read with healthy skepticism (consultants are paid by incumbents).
+5. **VC market maps & thematic essays** — Sequoia "Market Maps," Bessemer "Roadmaps" + "State of the Cloud," a16z "Big Ideas" + thematic essays, Union Square Ventures "Thesis," NZS Capital "Complexity Investing." For evolving industries.
 
-6. **Trade-association data & industry trade press** — IBISWorld, Statista, Frost & Sullivan, sector-specific trade publications (e.g., Insurance Journal, Modern Healthcare, Auto News, Plastics News). Structural data + cultural context.
+6. **Consulting deep-dives** — McKinsey, BCG, Bain industry insights — for value-chain decomposition and profit-pool analysis. Read with healthy skepticism (consultants are paid by incumbents).
 
-7. **Leading-player filings** — annual reports / shareholder letters of the 3-5 top public players in the industry. Use these for cross-comparison; do not deep-dive each (that's what `research-company` is for).
+7. **Trade-association data & industry trade press** — IBISWorld, Statista, Frost & Sullivan, sector-specific trade publications (e.g., Insurance Journal, Modern Healthcare, Auto News, Plastics News). Structural data + cultural context.
 
-8. **News & investigative reporting** — for crises, regulatory shifts, disruption events that shape industry structure.
+8. **Leading-player filings** — annual reports / shareholder letters of the 3-5 top public players in the industry. Use these for cross-comparison; do not deep-dive each (that's what `research-company` is for).
+
+9. **News & investigative reporting** — for crises, regulatory shifts, disruption events that shape industry structure.
 
 ## Platform Navigation
 
@@ -58,6 +61,15 @@ Navigate each platform's structured pages directly rather than relying on web se
 - **Fundsmith**: `https://www.fundsmith.co.uk/news-media/`
 - **Akre Capital**: `https://www.akrecapital.com/`
 - Use `WebSearch`: `<industry name> "<investor name>" letter` for individual mentions
+
+### Long-form podcasts
+- **Colossus**:
+  - **Search**: `https://www.colossus.com/?s=<industry-name>`
+  - Each episode page has a transcript section with a "Download PDF" button, use this to download the transcript.
+  - *Business Breakdowns* episodes are particularly valuable: each is a 60-90 minute structured deconstruction of a single company.
+- **The Investors Podcast Network**:
+  - **Search**: `https://www.theinvestorspodcast.com/?s=<industry-name>`
+  - Each episode page has a transcript section, which needs to be expanded via the "Read More" button to show the full transcript.
 
 ### Mauboussin papers
 - Counterpoint Global / Morgan Stanley IM publications: `https://www.morganstanley.com/im/en-us/individual-investor/insights/articles.html`
@@ -135,6 +147,9 @@ investor-letters/buffett-1990-letter-airlines-excerpt.md
 investor-letters/sleep-zakaria-nomad-2010-costco-excerpt.md
 investor-letters/giverny-q4-2025-watsco-hvac-thesis.md
 investor-letters/akre-mastercard-thesis-2018.md
+podcasts/colossus-business-breakdowns-vms-csu-2021.md
+podcasts/colossus-invest-like-the-best-leonard-2014.md
+podcasts/tip-we-study-billionaires-watsa-fairfax-2023.md
 leading-players/csu-2024-shareholder-letter.pdf
 leading-players/topicus-2024-shareholder-letter.pdf
 trade-press/insurance-journal-captive-vs-independent-2024.md
@@ -166,6 +181,10 @@ Brief paragraph on industry definition, scope, why it deserves research focus, a
 ## Quality-Investor Letters
 | File | Description | Investor | Date |
 |------|-------------|----------|------|
+
+## Podcast Interviews
+| File | Description | Show | Date |
+|------|-------------|------|------|
 
 ## Leading Players (for cross-comparison)
 | File | Company | Description | Date |

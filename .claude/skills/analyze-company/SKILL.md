@@ -30,22 +30,24 @@ Read `src/research/companies/<company-slug>/sources/sources.md` to understand wh
 - **Cap documents per agent** — each agent should receive only what it can meaningfully process:
   - Proxy reader: most recent proxy + 1 older proxy (for change detection)
   - Annual report reader: 2-3 most recent glossy annual reports, 10-K only when there is no glossy annual report available
-  - Transcript reader: 2-3 most recent earnings calls + investor day (if available)
+  - Transcript reader (earnings): 2-3 most recent earnings calls + investor day (if available)
+  - Transcript reader (podcasts): 2-3 highest-signal podcast interviews from `sources/podcasts/` — prioritize founder/CEO interviews over third-party Business Breakdowns
   - News reader: company press releases and third-party news articles with interesting headlines only.
 - **Shareholder letters and analysis stay in main context** — these are compact and high-signal, no need for sub-agents.
 
 ### Step 2 — Extract from heavy documents via sub-agents
 
-Spawn four sub-agents in parallel using the pre-defined agents in `.claude/agents/`. Each agent handles a distinct, curated set of sources — no overlap.
+Spawn sub-agents in parallel using the pre-defined agents in `.claude/agents/`. Each agent handles a distinct, curated set of sources — no overlap. The `transcript-reader` is invoked **twice** (once for earnings/investor-day, once for podcasts) because the two formats reveal different things and combining them dilutes both.
 
-| Agent | `subagent_type` | Sources to pass |
-|-------|-----------------|-----------------|
-| Proxy Reader | `proxy-reader` | Most recent proxy + 1 older proxy |
-| Annual Report Reader | `annual-report-reader` | 2-3 most recent glossy annual reports (no 10-Ks) |
-| Transcript Reader | `transcript-reader` | 2-3 most recent earnings calls + investor day |
-| News Reader | `news-reader` | Company News, third-party news articles |
+| Agent | `subagent_type` | Sources to pass | Format hint to include in prompt |
+|-------|-----------------|-----------------|----------------------------------|
+| Proxy Reader | `proxy-reader` | Most recent proxy + 1 older proxy | — |
+| Annual Report Reader | `annual-report-reader` | 2-3 most recent glossy annual reports (no 10-Ks) | — |
+| Earnings Transcripts | `transcript-reader` | 2-3 most recent earnings calls + investor day | `"format: earnings + investor day"` |
+| Podcast Transcripts | `transcript-reader` | 2-3 highest-signal interviews from `sources/podcasts/` | `"format: long-form podcast interviews"` |
+| News Reader | `news-reader` | Company News, third-party news articles | — |
 
-When spawning each agent, include the **full file paths** of only the curated sources in the prompt.
+When spawning each agent, include the **full file paths** of only the curated sources in the prompt, plus the format hint where applicable.
 
 Each agent returns a structured markdown summary with `[filename, p. X-Y]` citations. Use these citations to spot-check specific pages in Step 4 if anything needs more depth or verification.
 

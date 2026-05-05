@@ -17,7 +17,8 @@ src/research/companies/<company-slug>/
 ├── sources/
 │   ├── sources.md          # Index of all collected sources
 │   ├── ir/                 # Investor relations materials (PDFs)
-│   ├── transcripts/        # Earnings call transcripts
+│   ├── transcripts/        # Earnings call & investor day transcripts
+│   ├── podcasts/           # Long-form podcasts (Colossus, TIP, etc.)
 │   ├── analysis/           # Third-party analysis and writeups
 │   └── news/               # News articles and investigative reports
 └── output/                 # Deep-dives produced by analyze-company
@@ -29,13 +30,14 @@ Search and collect material from these sources, roughly in order of importance, 
 
 1. **Company IR website** — Shareholder letters, annual reports (10-K), proxy filings (DEF 14A), investor day presentations, and important press releases.
 2. **Earnings call & Investor Day transcripts** — on [seekingalpha.com](https://seekingalpha.com).
-3. **Third-party analysis** — on [seekingalpha.com](https://seekingalpha.com), [valueinvestorsclub.com](https://valueinvestorsclub.com) and [substack.com](https://substack.com). Long-term fundamental analysis only. Skip short-term trading ideas, technical analysis, and momentum-based articles.
-4. **Fund letters and reports** — from quality fundamental investors who have written about the company. These are often the most insightful sources — track down the original PDFs from fund websites when possible.
-5. **News and investigative reporting** — from reputable or industry-specific sources.
+3. **Long-form podcast transcripts** — from [Colossus](https://www.colossus.com/) (Invest Like the Best, Business Breakdowns, Founders) and [The Investors Podcast Network](https://www.theinvestorspodcast.com/). Direct insights from CEOs, investors and industry experts plus company specific analysis.
+4. **Third-party analysis** — on [seekingalpha.com](https://seekingalpha.com), [valueinvestorsclub.com](https://valueinvestorsclub.com) and [substack.com](https://substack.com). Long-term fundamental analysis only. Skip short-term trading ideas, technical analysis, and momentum-based articles.
+5. **Fund letters and reports** — from quality fundamental investors who have written about the company. These are often the most insightful sources — track down the original PDFs from fund websites when possible.
+6. **News and investigative reporting** — from reputable or industry-specific sources.
 
 ## Platform Navigation
 
-Navigate each platform's structured pages directly rather than relying on web search to discover content. Web search misses results that are easily found via the platform's own navigation.
+Navigate each platform's structured pages directly rather than relying on web search to discover content. Web search misses results that are easily found via the platform's own navigation. Those platform's content needs authentication to access.
 
 ### Seeking Alpha
 - **Transcripts**: `https://seekingalpha.com/symbol/<TICKER>/earnings/transcripts`
@@ -46,6 +48,15 @@ Navigate each platform's structured pages directly rather than relying on web se
 
 ### Substack
 - Use `WebSearch` with `site:substack.com <company> <ticker>` — Substack has no central search across publications.
+
+### Colossus
+- **Search**: `https://www.colossus.com/?s=<company-name>`
+- Each episode page has a transcript section with a "Download PDF" button, use this to download the transcript.
+ - *Business Breakdowns* episodes are particularly valuable: each is a 60-90 minute structured deconstruction of a single company.
+
+### The Investors Podcast Network
+- **Search**: `https://www.theinvestorspodcast.com/?s=<company-name>`
+- Each episode page has a transcript section, which needs to be expanded via the "Read More" button to show the full transcript.
 
 ### Fund Letters
 - Use `WebSearch` to find fund letters mentioning the company. Look for the original PDF on the fund's website (e.g. `<fund>.com/letters/`). SA and Insider Monkey often republish excerpts, which are useful for discovering funds that hold the position, but always try to get the original.
@@ -117,6 +128,8 @@ ir/2024-annual-report.pdf
 ir/2024-proxy-statement.pdf
 transcripts/2024-q4-earnings-transcript.md
 transcripts/2025-investor-day-transcript.md
+podcasts/colossus-episode-name-2014.md
+podcasts/tip-episode-name-2023.md
 analysis/vic-username-2022.md
 analysis/sa-title-slug-2024.md
 analysis/giverny-capital-q4-2025-letter.md
@@ -139,6 +152,11 @@ After collecting all materials, create a `sources.md` index in the company direc
 | File | Description | Date |
 |------|-------------|------|
 | transcripts/2024-q4-earnings-transcript.md | Q4 2024 Earnings Call | 2025-02 |
+
+## Podcast Interviews
+| File | Description | Show | Date |
+|------|-------------|------|------|
+| podcasts/colossus-invest-like-the-best-leonard-2014.md | Mark Leonard interview | Invest Like the Best | 2014-05 |
 
 ## Analysis & Writeups
 | File | Description | Source | Date |

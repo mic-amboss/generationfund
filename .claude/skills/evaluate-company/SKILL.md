@@ -61,6 +61,7 @@ For every **❓ Insufficient evidence** item, attempt to resolve it from the pri
 
 **B. Sub-agent** — when verification spans multiple documents or requires structured extraction.
 - Available agents (in `.claude/agents/`): `annual-report-reader`, `proxy-reader`, `transcript-reader`, `news-reader`
+- `transcript-reader` handles both earnings/investor-day and podcast interviews; specify the format in the prompt and pass paths from `sources/transcripts/` or `sources/podcasts/` accordingly.
 - Pass a **targeted, narrow** prompt — not a comprehensive extraction
 - Example: *"Search the 2024 and 2025 annual reports for any disclosure of ROIC on incremental capital, capex IRR, or unit-economic returns on M&A. Quote exact numbers with [filename, p. X] citations. Do not summarize anything else."*
 

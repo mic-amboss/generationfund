@@ -1,7 +1,6 @@
 ---
 name: proxy-reader
 description: Extract people, compensation, ownership, and governance data from proxy filings (DEF 14A). Used by the analyze-company skill — not for automatic delegation.
-model: sonnet
 tools: Read, Grep, Glob
 ---
 

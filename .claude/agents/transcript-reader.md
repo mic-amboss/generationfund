@@ -1,7 +1,6 @@
 ---
 name: transcript-reader
 description: Extract strategic themes, management character, capital allocation thinking, and (for earnings) analyst concerns from spoken transcripts — earnings calls, investor days, and long-form podcast interviews with management or domain experts. Used by the analyze-company skill — not for automatic delegation.
-model: sonnet
 tools: Read, Grep, Glob
 ---
 

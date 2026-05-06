@@ -1,7 +1,6 @@
 ---
 name: annual-report-reader
 description: Extract shareholder letters, business description, financials, and capital allocation from annual reports and 10-Ks. Used by the analyze-company skill — not for automatic delegation.
-model: sonnet
 tools: Read, Grep, Glob
 ---
 

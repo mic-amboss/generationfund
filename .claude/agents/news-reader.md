@@ -1,7 +1,6 @@
 ---
 name: news-reader
 description: Extract key facts from company news and third-party news articles. Used by the analyze-company skill — not for automatic delegation.
-model: sonnet
 tools: Read, Grep, Glob
 ---
 

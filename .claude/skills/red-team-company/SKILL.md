@@ -33,6 +33,8 @@ Read:
 
 ### Step 2 — Score every [KILL] and [WARN] item
 
+`NEGATIVE-CHECKLIST.md` is the single source of truth. Score **every item** in it, in the order it appears (sections 1–7), under the matching section heading in the output. Copy items verbatim into the scoring tables — do not paraphrase, do not reorder, do not drop. If the checklist gains an item between pre-mortem dates, the next red-team picks it up automatically.
+
 For each item, the question is phrased so that "no" is sound. Assign:
 
 - **✓ Cleared** — answer is no, with cited evidence

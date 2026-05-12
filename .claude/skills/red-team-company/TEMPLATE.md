@@ -26,73 +26,41 @@ The pre-mortem must read as a plausible journalist's account with hindsight, not
 
 ## Negative checklist scoring
 
-Score each item: **✓ Cleared** / **✗ Triggered** / **❓ Insufficient evidence**. Every score requires a citation.
+Single source of truth: [`src/NEGATIVE-CHECKLIST.md`](../../../../NEGATIVE-CHECKLIST.md). Copy every item from the live checklist verbatim into the tables below — one row per item, in checklist order, under the matching section heading. Do not paraphrase, do not reorder, do not drop items.
+
+Scoring rubric: **✓ Cleared** / **✗ Triggered** / **❓ Insufficient evidence**. Every Cleared or Triggered requires a citation — `[deep-dive.md §X]` or `[source-file, p. N]`.
+
+[KILL] items default to Triggered when in doubt — false negatives on the kill list are the most expensive mistake this checklist exists to prevent.
 
 ### 1. Moat / business erosion
 
 | Item | Score | Evidence |
 |---|---|---|
-| [KILL] Moat already narrowing | | |
-| [KILL] Hostage to single supplier/customer/distributor/platform | | |
-| [KILL] Replicable in 3-5 years by well-capitalized competitor | | |
-| [KILL] Reliant on single tech/regulation/distribution arrangement | | |
-| [WARN] Narrative-driven moat | | |
-| [WARN] AI/LLM threat addressed with evidence | | |
-| [WARN] Moat confirmed by independent third parties | | |
+| *(one row per NEGATIVE-CHECKLIST.md §1 item, verbatim)* |  |  |
 
 ### 2. Management / character / governance
 
 | Item | Score | Evidence |
 |---|---|---|
-| [KILL] CEO/CFO history of restatements/regulatory action/fraud | | |
-| [KILL] Material related-party transactions benefiting insiders | | |
-| [KILL] Controlling structure abused | | |
-| [KILL] CFO turnover >2× in 5 years | | |
-| [KILL] Non-Big-4 auditor with disagreements/recent change | | |
-| [WARN] Insider compensation out of proportion to peers | | |
-| [WARN] Net insider selling without diversification reason | | |
-| [WARN] Family members in officer/board roles without independent qualifications | | |
-| [WARN] Aspirational guidance missed by >25% | | |
-| [WARN] CEO appears more on financial media than in operating business | | |
+| *(one row per NEGATIVE-CHECKLIST.md §2 item, verbatim)* |  |  |
 
 ### 3. Accounting / financial integrity
 
 | Item | Score | Evidence |
 |---|---|---|
-| [KILL] Restated earnings in last 5 years | | |
-| [KILL] NI > 1.5× OCF for 2+ years | | |
-| [KILL] Goodwill + intangibles >50% of total assets | | |
-| [KILL] Material off-balance-sheet liabilities | | |
-| [KILL] SBC growing faster than revenue 2+ years | | |
-| [WARN] Aggressive non-GAAP adjustments | | |
-| [WARN] Reserves/accruals trending up faster than revenue | | |
-| [WARN] Working capital deteriorating unexplained | | |
-| [WARN] Aggressive revenue recognition vs. peers | | |
+| *(one row per NEGATIVE-CHECKLIST.md §3 item, verbatim)* |  |  |
 
 ### 4. Capital allocation / balance sheet
 
 | Item | Score | Evidence |
 |---|---|---|
-| [KILL] Net debt / EBITDA >3× | | |
-| [KILL] Within 20% of breaching covenant | | |
-| [KILL] Buybacks funded by debt above intrinsic value | | |
-| [KILL] M&A paid for via stock at discount or cash at premium | | |
-| [WARN] M&A outpacing organic growth 3+ years (roll-up risk) | | |
-| [WARN] Capex declining faster than revenue | | |
-| [WARN] New categories of risk recently taken | | |
-| [WARN] Dividend growth outpacing FCF growth | | |
+| *(one row per NEGATIVE-CHECKLIST.md §4 item, verbatim)* |  |  |
 
 ### 5. Industry / structural / external
 
 | Item | Score | Evidence |
 |---|---|---|
-| [KILL] Industry structurally declining or commoditizing | | |
-| [KILL] Single regulatory/political decision risk | | |
-| [KILL] Geographic concentration >70% in structurally risky region | | |
-| [WARN] Late-cycle dependent | | |
-| [WARN] Tailwind started <5 years ago | | |
-| [WARN] New entrants compressing industry economics | | |
-| [WARN] Moat dependent on repealable regulation | | |
+| *(one row per NEGATIVE-CHECKLIST.md §5 item, verbatim)* |  |  |
 
 ### 6. Behavioral / personal biases
 
@@ -100,31 +68,15 @@ This section examines *us*, not the company.
 
 | Item | Score | Evidence / acknowledgment |
 |---|---|---|
-| [KILL] Anchoring on past price | | |
-| [KILL] In a hurry | | |
-| [KILL] Bending criteria to fit thesis | | |
-| [WARN] Read bear case from smartest skeptic | | |
-| [WARN] Pre-mortem written | | |
-| [WARN] Deferring to high-conviction holder | | |
-| [WARN] Idea correlated with existing holding | | |
-| [WARN] Comfortable through 50% drawdown | | |
-| [WARN] Explainable in three sentences | | |
+| *(one row per NEGATIVE-CHECKLIST.md §6 item, verbatim)* |  |  |
 
 ### 7. Historical pattern matches
 
-For each archetype, name the resemblance (if any) and the structural difference.
+For each archetype listed in `NEGATIVE-CHECKLIST.md §7`, name the resemblance (if any) and the structural difference. One row per archetype, verbatim.
 
 | Archetype | Resemblance? | What's similar | Structural difference |
 |---|---|---|---|
-| Valeant / Wirecard | | | |
-| Enron | | | |
-| GE / IBM | | | |
-| Kraft Heinz | | | |
-| Goosehead | | | |
-| WeWork / Theranos | | | |
-| PG&E / utilities | | | |
-| Nifty Fifty / 2021 quality bubble | | | |
-| Luckin / Chinese ADR fraud | | | |
+| *(one row per NEGATIVE-CHECKLIST.md §7 archetype, verbatim)* |  |  |  |
 
 ---
 

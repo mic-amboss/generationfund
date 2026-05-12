@@ -43,13 +43,17 @@ Read `src/research/companies/<company-slug>/output/deep-dive.md` in full. Take n
 
 ### Step 3 — Score the checklist
 
-For each item in `CHECKLIST.md`, assign one of:
+`CHECKLIST.md` is the single source of truth. Score **every item** in it, in the order it appears, under the matching criterion heading in the output. Do not paraphrase the items — copy them verbatim into the scoring tables, so a future reader can audit against the live checklist.
 
-- **✅ Pass** — evidence in the deep dive clearly clears the item
-- **❌ Fail** — evidence in the deep dive clearly fails the item
+For each item, assign one of:
+
+- **✅ Pass** — evidence clearly clears the item
+- **❌ Fail** — evidence clearly fails the item
 - **❓ Insufficient evidence** — the deep dive does not contain what's needed to judge
 
 Cite specific evidence for every Pass and Fail. A score without a citation is an assertion, not a judgment.
+
+**Engine, not snapshot — and the discipline that keeps it honest.** Several criterion-1 and criterion-3 items allow engine-based evidence: a reinvesting business may show weak headline ROIC, cash conversion, or capital efficiency today while the unit economics already prove the mature business will compound capital at high rates. Engine-based evidence is admissible, but only when *specific and verifiable* — quoted cohort retention numbers, gross-margin trajectory by vintage, named mature-peer benchmarks, unit-level payback math, capex IRR disclosures. Narrative like "the unit economics will eventually work" or "at scale margins should expand" is a **Fail**, not a Pass. This guardrail is what prevents the qualitative reframe from becoming a loophole that justifies any growth-stage story.
 
 ### Step 4 — Resolve gaps via primary sources
 
@@ -63,7 +67,7 @@ For every **❓ Insufficient evidence** item, attempt to resolve it from the pri
 - Available agents (in `.claude/agents/`): `annual-report-reader`, `proxy-reader`, `transcript-reader`, `news-reader`
 - `transcript-reader` handles both earnings/investor-day and podcast interviews; specify the format in the prompt and pass paths from `sources/transcripts/` or `sources/podcasts/` accordingly.
 - Pass a **targeted, narrow** prompt — not a comprehensive extraction
-- Example: *"Search the 2024 and 2025 annual reports for any disclosure of ROIC on incremental capital, capex IRR, or unit-economic returns on M&A. Quote exact numbers with [filename, p. X] citations. Do not summarize anything else."*
+- Example: *"Search the 2024 and 2025 annual reports for any disclosure of returns on incremental capital, capex IRR, unit-economic payback, or cohort retention. Quote exact numbers with [filename, p. X] citations. Do not summarize anything else."*
 
 After resolving, update the score to ✅ or ❌. If the gap genuinely cannot be closed from available sources, leave as ❓ and list it in **Open evidence gaps** — unresolved ❓ on a [REQ] item counts as a failure for verdict purposes.
 
@@ -100,7 +104,7 @@ Writing guidance:
 - Open with a one-paragraph **executive verdict** — the reader knows the bucket and the position-size recommendation in 30 seconds
 - The **checklist scoring tables** are the core artifact — every item, every score, every citation
 - **Be willing to say no.** A 95% pass rate would mean we're not actually filtering. Sub-5% is the goal.
-- **Position-size recommendation** follows the philosophy's tiers: 3–5% initial, 8–12% on conviction (top 5–8 names only), trim above 15%
+- **Position-size recommendation** is qualitative — `Initial` / `Conviction` / `Watchlist` / `Pass`. The percentage ranges live in PHILOSOPHY and may change; the skill stays out of that detail.
 - **No advocacy.** The document adjudicates, it does not sell.
 
 ### Step 8 — Self-review

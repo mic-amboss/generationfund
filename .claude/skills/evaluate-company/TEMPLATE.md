@@ -6,7 +6,7 @@ created: [YYYY-MM-DD]
 updated: [YYYY-MM-DD]
 ticker: [TICKER]
 verdict: [Generational candidate / Quality but sub-generational / Watchlist / Pass]
-recommended_position: [Initial X% / Watchlist / N/A]
+recommended_position: [Initial / Conviction / Watchlist / Pass]
 ---
 
 # [Company Name] — Thesis
@@ -39,62 +39,35 @@ Why the current price clears the 15%+ forward IRR hurdle. Base / bull / bear sce
 
 ## Positive checklist scoring
 
-Score each item: **✅ Pass** / **❌ Fail** / **❓ Insufficient evidence**. Every score requires a citation.
+Single source of truth: [`src/CHECKLIST.md`](../../../../CHECKLIST.md). Copy every item from the live checklist verbatim into the tables below — one row per item, in checklist order, under the matching section heading. Do not paraphrase, do not reorder, do not drop items. If the checklist gains an item between thesis dates, the next evaluation picks it up automatically.
+
+Scoring rubric: **✅ Pass** / **❌ Fail** / **❓ Insufficient evidence**. Every Pass or Fail requires a citation — `[deep-dive.md §X]` or `[source-file, p. N]`.
+
+Engine-based evidence (cohort retention, unit economics, mature-peer benchmarks, capex IRR disclosures) is admissible for the structural items in §1 and §3, but must be specific and quoted. Narrative — "should expand at scale", "will eventually work" — is a **Fail**.
 
 ### 1. Great Business
 
 | Item | Score | Evidence |
 |---|---|---|
-| Sustainable competitive advantage | | |
-| Flywheel | | |
-| Recurring or contractually sticky revenue | | |
-| ROIC >20% on installed base | | |
-| ROIC >20% on incremental capital | | |
-| Capital-light | | |
-| Cash conversion ≥80% | | |
-| Pricing power | | |
-| Resilient to disruption | | |
-| Fortress balance sheet | | |
-| [PREF] Top dog | | |
-| [PREF] Customer concentration <10% | | |
-| [PREF] Diversified revenue | | |
+| *(one row per CHECKLIST.md §1 item, verbatim)* |  |  |
 
 ### 2. Principled, idiosyncratic owner-operator(s)
 
 | Item | Score | Evidence |
 |---|---|---|
-| Founder-led OR 10+ year executor | | |
-| Meaningful insider ownership | | |
-| No concerning insider selling | | |
-| Capital allocation track record | | |
-| Substantive communications | | |
-| Long-term orientation | | |
-| Shareholders as partners | | |
-| Idiosyncratic strategy | | |
-| [PREF] Weathered a downturn | | |
-| [PREF] Decentralized structure | | |
-| [PREF] Cultural evidence | | |
+| *(one row per CHECKLIST.md §2 item, verbatim)* |  |  |
 
 ### 3. Long runway for profitable compounding
 
 | Item | Score | Evidence |
 |---|---|---|
-| Market growth supports 10%+ for 10+ years | | |
-| Reinvestment engine at >20% IRR | | |
-| Durable structural tailwind | | |
-| [PREF] Optionality | | |
-| [PREF] Multiple winners possible | | |
+| *(one row per CHECKLIST.md §3 item, verbatim)* |  |  |
 
 ### 4. Reasonable price
 
 | Item | Score | Evidence |
 |---|---|---|
-| Base-case forward IRR ≥15% | | |
-| Bear case does not impair capital | | |
-| Price ≤1.2× intrinsic value | | |
-| No reliance on multiple expansion | | |
-| [PREF] Below historical or peer multiple | | |
-| [PREF] Articulated edge | | |
+| *(one row per CHECKLIST.md §4 item, verbatim)* |  |  |
 
 ---
 
@@ -119,8 +92,7 @@ What couldn't be verified from available sources, and what additional research w
 
 ## Recommended action
 
-- **Position size**: X% (or watchlist / pass)
-- **Initial vs. conviction**: position rationale within the philosophy's tiers
+- **Position**: `Initial` / `Conviction` / `Watchlist` / `Pass` — with a one-sentence rationale. Percentage ranges are set in PHILOSOPHY, not here.
 - **Triggers to add / trim / exit**: specific, observable conditions
 - **Review cadence**: quarterly / event-driven
 

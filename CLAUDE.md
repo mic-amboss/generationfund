@@ -11,7 +11,9 @@ src/research/
 │   │   ├── sources.md            # Index
 │   │   ├── ir/                   # Annual reports, 10-Ks, proxies
 │   │   ├── transcripts/          # Earnings calls, investor days
+│   │   ├── podcasts/             # Colossus, TIP, Acquired transcripts
 │   │   ├── analysis/             # Fund letters, SA/VIC writeups
+│   │   ├── scuttlebutt/          # expert calls, employee sentiment, customer reviews, industry sentiment
 │   │   └── news/                 # News & investigative reporting
 │   └── output/                   # Deep-dives, theses, pre-mortems, valuations
 ├── industries/<industry-slug>/

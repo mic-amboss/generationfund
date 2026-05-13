@@ -33,7 +33,7 @@ Read `src/research/companies/<company-slug>/sources/sources.md` to understand wh
   - Transcript reader (earnings): 2-3 most recent earnings calls + investor day (if available)
   - Transcript reader (podcasts): 2-3 highest-signal podcast interviews from `sources/podcasts/` — prioritize founder/CEO interviews over third-party Business Breakdowns
   - News reader: company press releases and third-party news articles with interesting headlines only.
-- **Shareholder letters and analysis stay in main context** — these are compact and high-signal, no need for sub-agents.
+- **Shareholder letters, analysis, scuttlebutt stay in main context** — these are compact, nuanced and high-signal, no need for sub-agents.
 
 ### Step 2 — Extract from heavy documents via sub-agents
 
@@ -51,7 +51,7 @@ When spawning each agent, include the **full file paths** of only the curated so
 
 Each agent returns a structured markdown summary with `[filename, p. X-Y]` citations. Use these citations to spot-check specific pages in Step 4 if anything needs more depth or verification.
 
-### Step 3 — Read analysis and fund letters in main context
+### Step 3 — Read fund letters, analysis and scuttlebutt in main context
 
 In the main context, read only the high-signal sources firsthand:
 
@@ -59,6 +59,7 @@ In the main context, read only the high-signal sources firsthand:
 - **Fund letters** — what long-term investors highlight as special (or concerning), often the most insightful sources
 - **VIC writeups** — detailed, thesis-driven analysis from experienced investors
 - **Deep Substack posts** — thorough independent analysis
+- **Scuttlebutt** — unique, primary insights from expert calls, employee sentiment, customer reviews, broader industry
 
 After reading, note claims worth verifying against primary sources. Use sub-agent citations to spot-check specific pages.
 

@@ -76,5 +76,5 @@ The descriptive (`analyze-*`) and adjudicative (`evaluate-*`, `red-team-*`, `val
 - All sources go under `src/research/companies/<slug>/sources/` or `src/research/industries/<slug>/sources/` with a `sources.md` index
 - All outputs go under `src/research/<entity-type>/<slug>/output/`
 - PDFs downloaded via `curl`, web pages extracted via `playwright-cli` + Readability/Turndown
-- Research sessions: start `playwright-cli -s=research open --headed`, load auth state, collect sequentially, close when done
+- Research sessions: start `playwright-cli -s=research-<company-name> open --headed`, load auth state, collect sequentially, close when done
 - Relative source links in deep-dives use `../sources/...` (the output and sources folders are siblings under the entity directory)

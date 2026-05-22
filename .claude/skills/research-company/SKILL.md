@@ -114,29 +114,29 @@ For content only available as a web page, use `playwright-cli` to extract both a
 **Step 0 — Start session and load auth state** (once per research session):
 
 ```bash
-playwright-cli -s=research open --headed
-playwright-cli -s=research state-load .playwright-cli/auth-state.json
+playwright-cli -s=research-<company-name> open --headed
+playwright-cli -s=research-<company-name> state-load .playwright-cli/auth-state.json
 ```
 
 **Step 1 — Navigate to the page:**
 
 ```bash
-playwright-cli -s=research goto "<url>"
+playwright-cli -s=research-<company-name> goto "<url>"
 ```
 
-Use `playwright-cli -s=research snapshot` to verify the page loaded correctly and authentication is active.
+Use `playwright-cli -s=research-<company-name> snapshot` to verify the page loaded correctly and authentication is active.
 
 **Step 2 — Save as PDF:**
 
 ```bash
-playwright-cli -s=research pdf > src/research/companies/<company-slug>/sources/<subfolder>/<filename>.pdf
+playwright-cli -s=research-<company-name> pdf > src/research/companies/<company-slug>/sources/<subfolder>/<filename>.pdf
 ```
 
 **Step 3 — Extract HTML and convert to markdown:**
 
 ```bash
 # Extract the page's HTML
-playwright-cli -s=research eval "document.documentElement.outerHTML" > /tmp/page.html
+playwright-cli -s=research-<company-name> eval "document.documentElement.outerHTML" > /tmp/page.html
 
 # Convert to clean markdown using the bundled script
 npx tsx .claude/skills/research-company/scripts/extract-markdown.ts \
@@ -150,7 +150,7 @@ The extraction script uses Mozilla's Readability to isolate article content and 
 **Step 4 — Close the page when done collecting from that site:**
 
 ```bash
-playwright-cli -s=research close
+playwright-cli -s=research-<company-name> close
 ```
 
 ### Scuttlebutt

@@ -118,16 +118,16 @@ curl -L -o src/research/industries/<industry-slug>/sources/<subfolder>/<filename
 Use `playwright-cli` to extract both a PDF snapshot and a clean markdown version (same Step 0–4 flow as `research-company`).
 
 ```bash
-playwright-cli -s=research open --headed
-playwright-cli -s=research state-load .playwright-cli/auth-state.json
-playwright-cli -s=research goto "<url>"
-playwright-cli -s=research pdf > src/research/industries/<industry-slug>/sources/<subfolder>/<filename>.pdf
-playwright-cli -s=research eval "document.documentElement.outerHTML" > /tmp/page.html
+playwright-cli -s=research-<company-name> open --headed
+playwright-cli -s=research-<company-name> state-load .playwright-cli/auth-state.json
+playwright-cli -s=research-<company-name> goto "<url>"
+playwright-cli -s=research-<company-name> pdf > src/research/industries/<industry-slug>/sources/<subfolder>/<filename>.pdf
+playwright-cli -s=research-<company-name> eval "document.documentElement.outerHTML" > /tmp/page.html
 npx tsx .claude/skills/research-company/scripts/extract-markdown.ts \
   /tmp/page.html \
   src/research/industries/<industry-slug>/sources/<subfolder>/<filename>.md \
   --url="<source-url>"
-playwright-cli -s=research close
+playwright-cli -s=research-<company-name> close
 ```
 
 ### File Naming Convention

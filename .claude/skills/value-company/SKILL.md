@@ -147,6 +147,8 @@ Writing guidance:
 - Name where they converge and where they don't
 - Sensitivity: the 2–3 swing variables, each with the ±300bps move
 
+**Reconcile upstream docs.** `thesis.md` and `premortem.md` are often written with conditionals pending this valuation ("Initial, pending `value-company` confirmation…", "if Sub-target, downgrade to Watchlist"). After the verdict, check both for such conditionals and resolve them in place: update their frontmatter (`verdict`, `recommended_position` / `recommendation`, `updated`) and mark the fired conditional with a dated note rather than silently rewriting it. A verdict that fires a conditional nobody reconciles leaves the document chain contradicting itself.
+
 ### Step 10 — Self-review
 
 Before presenting:

@@ -60,22 +60,34 @@ What exit multiple is applied at year 10, and why. If exit > entry, name the mul
 
 ---
 
-## Lens 2 — Destination analysis (20-year end-state)
+## Lens 2 — Destination analysis (back-cast from 2046)
 
-**TAM × share × margin × multiple → end-state market cap → annualize back.**
+**Stand in 2046 and look back. No projection period, no 20-year CAGR — describe the destination, value it, annualize.**
 
-| Component | Today | 2046 | Source / analog |
-|---|---|---|---|
-| TAM | $[X]bn | $[X]bn | [TAM growth rate × source] |
-| Market share | [X%] | [X%] | [analog: e.g., "Costco 10% of US grocery"] |
-| Revenue conversion (margin / take rate) | [X%] | [X%] | [mature peer] |
-| Operating margin (steady state) | [X%] | [X%] | |
-| Terminal multiple | [X×] | [X×] | [mature peer] |
-| Net dilution / buyback rate (annual) | n/a | [±X%] | |
+### The world in 2046
 
-- End-state market cap: $[X]bn
-- End-state per-share value: $[X]
-- **Lens 2 IRR: [X.X%]**
+A short paragraph: the industry at maturity — which secular shifts have fully played out, what has consolidated, what has commoditized, what no longer exists in its current form. Then the company within it, assuming the thesis worked: the businesses it operates, the adjacencies its moat pulled it into, what the franchise looks like at maturity.
+
+### Destination markets
+
+| Market (2046) | Sizing logic (first principles) | 2046 size | Company share | Share analog |
+|---|---|---|---|---|
+| [core market] | [e.g., units × penetration × spend] | $[X]bn | [X%] | [e.g., "Costco ~11% of US grocery"] |
+| [adjacency — flag as option] | | | | |
+
+### Destination economics
+
+| Component | 2046 | Anchor |
+|---|---|---|
+| Revenue (Σ markets × share) | $[X]bn | |
+| Steady-state operating margin / FCF conversion | [X%] | [mature peer] |
+| Terminal multiple (mature, slower-growing version) | [X×] | [mature peer] |
+| End-state market cap | $[X]bn | |
+| Shares in 2046 (net dilution/buyback ±X%/yr) | [X]M | |
+| End-state value per share | $[X] | |
+
+- **Lens 2 IRR: [X.X%]** = (end-state per share / current price)^(1/20) − 1
+- **Path robustness (Sleep's question):** [does the company reach this destination by many paths or one narrow one?]
 - Confidence: [high / med / low] — flag low if the end-state is genuinely speculative (early-stage platforms, optionality plays).
 
 ---

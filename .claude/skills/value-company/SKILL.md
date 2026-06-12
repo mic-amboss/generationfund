@@ -17,7 +17,7 @@ We do not output a "fair value" or "intrinsic value per share." Forward DCFs tha
 Instead we output an **expected 10-year IRR** and judge it against the 15% hurdle. Three independent lenses must converge on the IRR for the verdict to be robust:
 
 - **Lens 1 — Bottom-up driver model** (primary). Model the actual unit economics of the business for 10 years, apply a pragmatic exit multiple, solve for IRR.
-- **Lens 2 — Destination analysis** (Sleep-style). Imagine the 20-year end-state. TAM × share × margin × multiple → end-state market cap → annualize back to IRR.
+- **Lens 2 — Destination analysis** (Sleep-style). Stand in 2046 and look back: describe the mature world, place the company in it (including adjacencies), size the destination markets from first principles, value that end-state, annualize back to IRR. A back-cast, not a forecast.
 - **Lens 3 — IRR decomposition** (Damodaran/Bogle). FCF yield + growth + multiple change ± dilution. A 5-minute sanity check.
 
 Convergent IRRs across the three lenses → conviction. Divergence → research question. The gap *is* the analysis.
@@ -76,19 +76,26 @@ For non-payers (most compounders): `IRR = (Year10_Equity_Value / Current_Price)^
 
 ### Step 5 — Build Lens 2 (destination analysis)
 
-20-year end-state imagination. For 2046 (or current year + 20):
+Lens 2 is a **back-cast, not a forecast**. Lens 1 walks forward from today, year by year; Lens 2 stands in 2046 (current year + 20), describes the world it finds there, and looks back. There is no projection period — only today and the destination. Two tripwires that mean it has been built wrong:
 
-- **TAM in 20 years** — start with current TAM, apply a defensible TAM growth rate. Cite the source for current TAM.
-- **Plausible market share at maturity** — anchor on peer analogs (what did Walmart hit, what did Costco hit, what did Visa hit). State the analog explicitly.
-- **Steady-state operating margin** — where does this business settle vs. mature peers?
-- **Terminal multiple at maturity** — what multiple does a mature, slower-growing version of this business deserve?
-- **Net dilution / buyback rate** — apply over the 20 years.
+- **A "20-year revenue CAGR" assumption.** That is Lens 1 with a longer window, and any "convergence" between the lenses becomes the model agreeing with itself.
+- **Annual rows on the `Lens2-Destination` tab.** The tab has exactly two states: today and 2046.
+
+Lens 2 must be built independent of Lens 1's drivers — that independence is what makes the triangulation meaningful. Build it in this order, prose before numbers:
+
+1. **Describe the 2046 world.** A short paragraph, written into `valuation.md` before touching the spreadsheet: what does the industry look like at maturity? Which secular shifts have fully played out (penetration curves saturated, generational turnover complete, regulation settled, technology shifts absorbed)? What has consolidated, what has commoditized, what no longer exists in its current form?
+2. **Place the company in that world, assuming the thesis worked.** What businesses does it operate? Which adjacencies has the moat pulled it into (Amazon retail → AWS, Costco → Kirkland, Copart salvage → whole-car)? List core and adjacencies separately — adjacencies are options to be sized and flagged, not buried in a blended growth rate.
+3. **Size each destination market from first principles** — never as today's TAM × growth rate. Reason about the 2046 market directly: units × penetration × spend per unit, or share of a 2046 industry profit pool. Cite the sizing logic. Then set the company's mature share per market, anchored on named analogs (what did Costco reach in US grocery, Visa in card volume, Walmart in US retail).
+4. **Set the mature economics.** Steady-state operating margin and FCF conversion vs. the best mature peers; terminal multiple for an entrenched but slower-growing version of the business; net dilution/buyback rate over 20 years.
+5. **Value the destination and annualize back:**
 
 ```
-End-state market cap = TAM_2046 × share × revenue_to_FCF_conversion × terminal_multiple
+End-state market cap = Σ_market (Market_size_2046 × share × FCF_conversion) × terminal_multiple
 End-state equity per share = End-state market cap / (current shares × (1 + net_dilution_rate)^20)
 IRR_lens2 = (End-state equity per share / current price)^(1/20) - 1
 ```
+
+6. **Path-robustness check (Sleep's actual question).** Is the destination reachable by many paths or only one narrow one? A company that arrives whether or not any single initiative works deserves more confidence than one that needs a specific sequence to break right. State the answer in one sentence.
 
 Lens 2 is most useful when the end-state is *thinkable*. For some businesses (early-stage platforms, optionality plays) the end-state is genuinely speculative and Lens 2 should be flagged as low-confidence.
 
@@ -146,6 +153,7 @@ Before presenting:
 - [ ] Every blue-input cell in the workbook has a source comment per `xlsx` conventions
 - [ ] `recalc.py` reports zero formula errors
 - [ ] Lens 1 driver tree matches the archetype, not a generic DCF
+- [ ] Lens 2 is a back-cast: no 20-year CAGR assumption, no annual rows, destination prose written, markets sized from first principles, built independent of Lens 1's drivers
 - [ ] Exit multiple ≤ entry multiple OR the multiple-expansion bet is named
 - [ ] Lens 3 decomposition does NOT have >300bps from multiple expansion (or, if it does, it is flagged as a re-rating bet)
 - [ ] Verdict matches the lenses (no "Lens 1 says 11% but I rounded up to Underwrites")
@@ -360,7 +368,7 @@ Defer to the `xlsx` skill for color coding, formatting, formula discipline, sour
 |---|---|
 | `Inputs` | Market data (price, shares, debt), 5y historical financials. All blue-input + sourced. |
 | `Lens1-Driver` | Bespoke 10-year forecast per archetype. The driver tree IS the tab. |
-| `Lens2-Destination` | 20-year end-state IRR (TAM × share × margin × multiple). |
+| `Lens2-Destination` | 2046 back-cast: destination markets × share × mature economics → end-state value → IRR. Two states only (today / 2046) — no annual rows. |
 | `Lens3-Decomp` | Five-line IRR decomposition. |
 | `Summary` | Convergence panel + sensitivity + verdict. |
 

@@ -52,9 +52,11 @@ These three documents predate any specific company decision and do not bend to f
 - **value-company** — Build a bespoke valuation model and triangulate a 10-year expected IRR via three lenses (driver model, destination analysis, IRR decomposition). Bespoke per business-model archetype, not a generic DCF. Produces `valuation.xlsx` + `valuation.md` with an IRR and a Reasonable-price verdict (Underwrites @ 15%+ / Sub-target / Pass on price). Run after `evaluate-company`.
 - **research-industry** — Collect source material for an industry/sector (frameworks, primers, fund-letter commentary, VC maps, trade press). Invoke when the user wants to understand a sector as a hunting ground for compounders.
 - **analyze-industry** — Synthesize an industry's collected sources into a structured deep-dive applying 11 diagnostic frameworks (Buffett binary, BCG Advantage Matrix, Mauboussin moats, Helmer 7 Powers, Dorsey 4 sources, Sleep SES, Akre reinvestment, Smith exclusion, NZS Resilience/Optionality/NZS, Christensen disruption, Five Forces). Requires sources collected via `research-industry`.
+- **clone-managers** — Harvest the current holdings of our admired managers (`src/research/managers/`) and turn overlap + new-conviction signals into a ranked idea queue, screened to our circle. Pabrai-style cloning as a *front-end idea source* — never position-mirroring; due diligence stays independent. Produces `src/research/watchlists/clone-candidates-<YYYY>-Q<N>.md`. Run quarterly, ~1 week after each 13F deadline.
 
 ## Workflow
 
+0. **Idea sourcing** — Two front-end funnels feed the pipeline: `research-industry` → `analyze-industry` (top-down, structural) and `clone-managers` (bottom-up, harvest admired managers' holdings). Both emit ranked shortlists; neither is a buy signal.
 1. **Industry-first** — Run `research-industry` then `analyze-industry` on a sector. This produces a ranked shortlist of 5–10 public players whose structural position justifies a follow-on company deep-dive.
 2. **Company deep-dive** — For each shortlisted name, run `research-company` then `analyze-company`. Descriptive synthesis only.
 3. **Adjudicate quality** — Run `evaluate-company` (positive checklist) and `red-team-company` (negative checklist) against the deep dive. The evaluation produces the bull thesis and verdict; the red-team produces the pre-mortem and go/no-go.

@@ -112,7 +112,7 @@ For accepted [WARN] items, the acknowledgment must be **specific and structural*
 
 ### Step 8 — Write the red-team file
 
-Save to `src/research/companies/<company-slug>/output/premortem.md` using the template at `.claude/skills/red-team-company/TEMPLATE.md`.
+Save to `src/research/companies/<company-slug>/output/premortem.md` using the template at `.agents/skills/red-team-company/TEMPLATE.md`.
 
 Writing guidance:
 

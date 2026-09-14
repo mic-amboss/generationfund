@@ -37,7 +37,7 @@ Read `src/research/companies/<company-slug>/sources/sources.md` to understand wh
 
 ### Step 2 — Extract from heavy documents via sub-agents
 
-Spawn sub-agents in parallel using the pre-defined agents in `.claude/agents/`. Each agent handles a distinct, curated set of sources — no overlap. The `transcript-reader` is invoked **twice** (once for earnings/investor-day, once for podcasts) because the two formats reveal different things and combining them dilutes both.
+Spawn sub-agents in parallel using the pre-defined agents in `.agents/agents/`. Each agent handles a distinct, curated set of sources — no overlap. The `transcript-reader` is invoked **twice** (once for earnings/investor-day, once for podcasts) because the two formats reveal different things and combining them dilutes both.
 
 | Agent | `subagent_type` | Sources to pass | Format hint to include in prompt |
 |-------|-----------------|-----------------|----------------------------------|
@@ -67,7 +67,7 @@ The annual-report-reader will return **pointers** to shareholder letters (file +
 
 ### Step 4 — Write the deep dive
 
-Read the template from `.claude/skills/analyze-company/TEMPLATE.md` and synthesize all extracted information into the deep dive. Save to:
+Read the template from `.agents/skills/analyze-company/TEMPLATE.md` and synthesize all extracted information into the deep dive. Save to:
 
 ```
 src/research/companies/<company-slug>/output/deep-dive.md

@@ -138,7 +138,7 @@ This is far more useful than WACC sensitivity (which is sideshow noise for compo
 
 ### Step 9 — Write `valuation.md`
 
-Save to `src/research/companies/<slug>/output/valuation.md` using the template at `.claude/skills/value-company/TEMPLATE.md`. Save the workbook to `…/output/valuation.xlsx`.
+Save to `src/research/companies/<slug>/output/valuation.md` using the template at `.agents/skills/value-company/TEMPLATE.md`. Save the workbook to `…/output/valuation.xlsx`.
 
 Writing guidance:
 - Open with executive verdict: triangulated IRR + bucket + the swing variable

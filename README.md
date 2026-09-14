@@ -1,14 +1,14 @@
 # Generation Fund
 
-AI-assisted investment research workspace powered by [Claude Code](https://claude.ai/code).
+AI-assisted investment research workspace with shared instructions and skills for coding agents.
 
 ## What is this?
 
-A structured system for collecting and analyzing investment research material using Claude Code skills. The workflow automates the tedious parts of fundamental research — finding, downloading, and organizing source material across dozens of sites — so you can focus on thinking.
+A structured system for collecting and analyzing investment research material using shared agent skills. The workflow automates the tedious parts of fundamental research — finding, downloading, and organizing source material across dozens of sites — so you can focus on thinking.
 
 ## How it works
 
-**1. Research a company** — Claude searches across IR websites, earnings transcripts, analyst writeups, fund letters, and news to build a comprehensive source library.
+**1. Research a company** — Your agent searches across IR websites, earnings transcripts, analyst writeups, fund letters, and news to build a comprehensive source library.
 
 ```
 > Research Watsco (WSO)
@@ -26,15 +26,19 @@ npm install
 
 Requires:
 - Node.js 18+
-- [Claude Code](https://claude.ai/code)
+- A coding agent that can read project instructions and run the research tools
 - [`playwright-cli`](https://github.com/anthropics/playwright-cli) on PATH
+
+Project instructions live in `AGENTS.md`; each skill has a `SKILL.md` in `.agents/skills/`. Claude Code uses symlinks to the same files. Agents without automatic discovery can read these files explicitly; see the compatibility guidance in `AGENTS.md`.
 
 ## Project Structure
 
 ```
-.claude/skills/           # Claude Code skills (research-company, analyze-company, ...)
-src/research/sources/     # Collected source material per company (gitignored)
-src/research/output/      # Research output
+AGENTS.md                # Shared project instructions (CLAUDE.md links here)
+.agents/skills/          # Shared research skills (.claude/skills links here)
+.agents/agents/          # Research-agent definitions (.claude/agents links here)
+src/research/companies/  # Company sources and output
+src/research/industries/ # Industry sources and output
 ```
 
 ## License

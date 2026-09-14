@@ -1,7 +1,7 @@
 ---
 name: research-industry
 description: Run deep research on an industry — find and collect qualified source material (industry primers, frameworks, fund-letter commentary, VC market maps, trade-association reports, leading-player filings) and save it to the industry's source directory. Use this skill whenever the user asks to research an industry, understand a sector's economics, build a watchlist within a market, or find the structural pattern that produces compounders in a domain — even if they don't explicitly say "research."
-allowed_tools: WebSearch, Fetch, bash(curl:*), bash(playwright-cli:*), bash(npx tsx .claude/skills/research-company/scripts/extract-markdown.ts:*),
+allowed_tools: WebSearch, Fetch, bash(curl:*), bash(playwright-cli:*), bash(npx tsx .agents/skills/research-company/scripts/extract-markdown.ts:*),
 ---
 
 # research-industry
@@ -123,7 +123,7 @@ playwright-cli -s=research-<company-name> state-load .playwright-cli/auth-state.
 playwright-cli -s=research-<company-name> goto "<url>"
 playwright-cli -s=research-<company-name> pdf > src/research/industries/<industry-slug>/sources/<subfolder>/<filename>.pdf
 playwright-cli -s=research-<company-name> eval "document.documentElement.outerHTML" > /tmp/page.html
-npx tsx .claude/skills/research-company/scripts/extract-markdown.ts \
+npx tsx .agents/skills/research-company/scripts/extract-markdown.ts \
   /tmp/page.html \
   src/research/industries/<industry-slug>/sources/<subfolder>/<filename>.md \
   --url="<source-url>"

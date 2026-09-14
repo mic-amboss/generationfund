@@ -77,7 +77,7 @@ Apply each framework explicitly. The deep-dive must show the work, not just the 
 
 ### Step 5 — Write the deep dive
 
-Read the template from `.claude/skills/analyze-industry/TEMPLATE.md` and synthesize all extracted information. Save to:
+Read the template from `.agents/skills/analyze-industry/TEMPLATE.md` and synthesize all extracted information. Save to:
 
 ```
 src/research/industries/<industry-slug>/output/industry-deep-dive.md

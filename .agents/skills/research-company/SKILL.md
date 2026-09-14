@@ -1,7 +1,7 @@
 ---
 name: research-company
 description: Run deep research on a company — find and collect qualified source material (annual reports, proxy filings, earnings transcripts, analyst reports, fund letters, articles, employee sentiment, customer reviews) and save it to the company's source directory. Use this skill whenever the user asks to research a company, gather investment materials, build a research dossier, analyze a stock, or collect sources on a business — even if they don't explicitly say "research."
-allowed_tools: WebSearch, Fetch, bash(curl:*), bash(playwright-cli:*), bash(npx tsx .claude/skills/research-company/scripts/extract-markdown.ts:*),
+allowed_tools: WebSearch, Fetch, bash(curl:*), bash(playwright-cli:*), bash(npx tsx .agents/skills/research-company/scripts/extract-markdown.ts:*),
 ---
 
 # research-company
@@ -139,7 +139,7 @@ playwright-cli -s=research-<company-name> pdf > src/research/companies/<company-
 playwright-cli -s=research-<company-name> eval "document.documentElement.outerHTML" > /tmp/page.html
 
 # Convert to clean markdown using the bundled script
-npx tsx .claude/skills/research-company/scripts/extract-markdown.ts \
+npx tsx .agents/skills/research-company/scripts/extract-markdown.ts \
   /tmp/page.html \
   src/research/companies/<company-slug>/sources/<subfolder>/<filename>.md \
   --url="<source-url>"

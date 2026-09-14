@@ -64,7 +64,7 @@ For every **❓ Insufficient evidence** item, attempt to resolve it from the pri
 - Quote the specific evidence in your scoring
 
 **B. Sub-agent** — when verification spans multiple documents or requires structured extraction.
-- Available agents (in `.claude/agents/`): `annual-report-reader`, `proxy-reader`, `transcript-reader`, `news-reader`
+- Available agents (in `.agents/agents/`): `annual-report-reader`, `proxy-reader`, `transcript-reader`, `news-reader`
 - `transcript-reader` handles both earnings/investor-day and podcast interviews; specify the format in the prompt and pass paths from `sources/transcripts/` or `sources/podcasts/` accordingly.
 - Pass a **targeted, narrow** prompt — not a comprehensive extraction
 - Example: *"Search the 2024 and 2025 annual reports for any disclosure of returns on incremental capital, capex IRR, unit-economic payback, or cohort retention. Quote exact numbers with [filename, p. X] citations. Do not summarize anything else."*
@@ -97,7 +97,7 @@ Be honest. Three out of four criteria is a pass.
 
 ### Step 7 — Write the evaluation file
 
-Save to `src/research/companies/<company-slug>/output/thesis.md` using the template at `.claude/skills/evaluate-company/TEMPLATE.md`.
+Save to `src/research/companies/<company-slug>/output/thesis.md` using the template at `.agents/skills/evaluate-company/TEMPLATE.md`.
 
 Writing guidance:
 

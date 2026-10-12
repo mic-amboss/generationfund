@@ -1,7 +1,6 @@
 ---
 name: value-company
 description: Build a bespoke valuation model for a generational-compounder candidate and triangulate the expected 10-year IRR via three lenses — bottom-up driver model, destination analysis (Sleep style), and IRR decomposition (Damodaran/Bogle). Use this skill after a deep dive (and ideally a thesis) exists. The output is an Excel workbook plus `valuation.md` with a triangulated IRR and a Reasonable-price verdict (Underwrites @ 15%+ / Sub-target / Pass on price). Models are built bespoke per business-model archetype (vertical SaaS, serial acquirer, network, asset-heavy compounder, insurance/float, branded consumer, platform, media/content, pharma, razor-and-blade), not from a generic template.
-allowed_tools: Read, Write, Edit, Glob, Grep, Bash, Agent
 ---
 
 # value-company

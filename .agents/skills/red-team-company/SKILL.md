@@ -1,7 +1,6 @@
 ---
 name: red-team-company
 description: Stress-test a company against the Generation Fund negative checklist via structured red-teaming and pre-mortem. Use this skill after a deep dive exists (via analyze-company), typically alongside or after evaluate-company. Produces kill-list scoring, pattern-matching against historical disasters (Valeant, Enron, Goosehead, etc.), a written pre-mortem, and a final go/no-go recommendation. Can revisit primary source material to verify red flags.
-allowed_tools: Read, Write, Edit, Glob, Grep, Agent
 ---
 
 # red-team-company
@@ -50,6 +49,8 @@ For every ❓ and every borderline ✗, verify against primary sources. Two path
 **A. Direct read** — for specific document spot-checks (proxy related-party section, 10-K Item 1A risk factors, transcript Q&A on a specific topic).
 
 **B. Sub-agent** — for multi-document targeted verification:
+
+Follow the delegation guidance in `AGENTS.md`, providing the matching `.agents/agents/<role>.md` file and curated source paths. Wait for verification results before scoring; perform the same checks directly if delegation is unavailable.
 
 | Agent | Best uses in red-team mode |
 |-------|----------------------------|

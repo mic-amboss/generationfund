@@ -30,14 +30,21 @@ src/research/
 └── watchlists/                   # Cross-entity artifacts (e.g., future-compounders.md)
 
 .agents/skills/                   # Shared research skills
-.agents/agents/                   # Sub-agents for research extraction
+.agents/agents/                   # Shared research-reader instructions
+.codex/agents/                    # Codex adapters pointing to shared readers
 ```
 
 ## Agent Compatibility
 
-`AGENTS.md`, `.agents/skills/`, and `.agents/agents/` are the canonical project instructions, skills, and research-agent definitions. Edit these shared files. `CLAUDE.md`, `.claude/skills`, and `.claude/agents` are relative symlinks for Claude Code compatibility.
+`AGENTS.md`, `.agents/skills/`, and `.agents/agents/` are the canonical project instructions, skills, and research-reader definitions. Keep workflow and extraction logic in these shared files; client adapters should only point to them.
 
-If your agent does not discover skills or sub-agent definitions automatically, read the relevant `SKILL.md` and the referenced `.agents/agents/*.md` files explicitly. Tool names and frontmatter may be specific to Claude Code; use equivalent tools available in your environment. If delegation is unavailable, perform the research roles sequentially using the same instructions.
+- Codex discovers project reader adapters in `.codex/agents/*.toml`. Each adapter instructs its agent to read the corresponding `.agents/agents/*.md` file from the repository root.
+- Claude Code uses relative symlinks: `CLAUDE.md`, `.claude/skills`, and `.claude/agents` point to the shared files.
+- Other clients can read the relevant `SKILL.md` explicitly and pass the shared reader instructions to their own delegation tools.
+
+When a skill requests sub-agents, use the client's available delegation mechanism. Select the named reader if registered; otherwise spawn a general agent and instruct it to read the matching `.agents/agents/<role>.md` file before processing sources. Pass the repository root, curated source paths, task scope, and expected output. Reader tasks are read-only; return summaries to the parent agent, which writes the final output. Run independent tasks in parallel within the available concurrency limit, queue or batch the rest, and wait for all required results before synthesis. If delegation is unavailable, say so and perform the same roles sequentially.
+
+Use available file-search, document-reading, web-search, and shell capabilities rather than assuming particular tool names or parameters. For PDFs, target relevant pages with a PDF reader or page-preserving text extraction; retain original page references for citations and inspect page images when tables or layout require it.
 
 ## Constitution
 

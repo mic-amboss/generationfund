@@ -1,7 +1,6 @@
 ---
 name: clone-managers
 description: Harvest the current portfolio holdings of our admired managers (Pabrai-style cloning) and turn them into a ranked idea queue for the company funnel. Use this skill whenever the user wants to clone/coattail superinvestors, review what the managers we admire are buying, run the quarterly holdings screen, refresh clone candidates, or generate company ideas from 13F / fund-letter holdings. Idea-generation only — due diligence is always independent.
-allowed_tools: WebSearch, Fetch, Agent, Read, Write, bash(curl:*)
 ---
 
 # clone-managers
@@ -52,6 +51,8 @@ Dataroma manager URL pattern: `https://www.dataroma.com/m/holdings.php?m=<CODE>`
 ### Step 1 — Harvest (fan out)
 
 Spawn one subagent per 2–3 managers (the gathering is noisy; keep only the findings). Give each: the manager → fund → source-code/CIK mapping above; the instruction to prefer Dataroma, fall back to EDGAR, use factsheets for non-US; and the required return format. Each subagent returns, per manager: as-of date, source URL, and a table of holdings (`Ticker | Company | %Port | Shares | $Value | Activity`), total value, holding count, one notable line. Concentrated books in full; Baron top-25 by weight; non-US top-10/8.
+
+Use the client's available delegation mechanism following `AGENTS.md`; batch independent tasks within its concurrency limit and wait for all required results before ranking. If delegation is unavailable, harvest the same manager groups sequentially.
 
 ### Step 2 — Signal 1: consensus overlap
 
@@ -113,6 +114,6 @@ Re-run quarterly, ~1 week after each 13F deadline (mid-Feb / mid-May / mid-Aug /
 
 ## Prerequisites
 
-- `WebSearch` / `Fetch` for Dataroma, EDGAR, and factsheet pages
-- `Agent` (subagent fan-out) for the harvest step
+- Web search and page retrieval for Dataroma, EDGAR, and factsheet pages
+- Sub-agent delegation for parallel harvesting where supported; sequential harvesting otherwise
 - No paid data subscription required for the manual loop

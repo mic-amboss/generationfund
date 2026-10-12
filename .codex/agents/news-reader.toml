@@ -1,0 +1,7 @@
+name = "news-reader"
+description = "Extract business events and facts from company press releases and third-party news."
+sandbox_mode = "read-only"
+developer_instructions = """
+Read .agents/agents/news-reader.md from the repository root before processing sources and follow its instructions.
+Use only the curated source files and task scope assigned by the parent. Return the required cited summary to the parent; do not edit files.
+"""

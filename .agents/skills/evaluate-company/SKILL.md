@@ -1,7 +1,6 @@
 ---
 name: evaluate-company
 description: Score a company against the Generation Fund investment philosophy and positive checklist. Use this skill after a deep dive exists (via analyze-company) to produce a structured evaluation, a bull thesis written in the language of the four criteria, full checklist scoring, and a verdict (Generational candidate / Quality but sub-generational / Watchlist / Pass). The evaluation can revisit primary source material when the deep dive is insufficient to score an item.
-allowed_tools: Read, Write, Edit, Glob, Grep, Agent
 ---
 
 # evaluate-company
@@ -60,11 +59,12 @@ Cite specific evidence for every Pass and Fail. A score without a citation is an
 For every **❓ Insufficient evidence** item, attempt to resolve it from the primary sources in `src/research/companies/<company-slug>/sources/`. Two paths:
 
 **A. Direct read** — fastest path when the answer is in a specific document.
-- Read the relevant file (use the `pages` parameter for PDFs)
+- Read the relevant file; for PDFs, target the relevant pages with a PDF reader or page-preserving text extraction
 - Quote the specific evidence in your scoring
 
 **B. Sub-agent** — when verification spans multiple documents or requires structured extraction.
 - Available agents (in `.agents/agents/`): `annual-report-reader`, `proxy-reader`, `transcript-reader`, `news-reader`
+- Follow the delegation guidance in `AGENTS.md`, providing the shared role file and curated source paths. Wait for verification results before scoring; perform the same checks directly if delegation is unavailable.
 - `transcript-reader` handles both earnings/investor-day and podcast interviews; specify the format in the prompt and pass paths from `sources/transcripts/` or `sources/podcasts/` accordingly.
 - Pass a **targeted, narrow** prompt — not a comprehensive extraction
 - Example: *"Search the 2024 and 2025 annual reports for any disclosure of returns on incremental capital, capex IRR, unit-economic payback, or cohort retention. Quote exact numbers with [filename, p. X] citations. Do not summarize anything else."*

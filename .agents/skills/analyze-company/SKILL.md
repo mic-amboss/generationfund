@@ -1,7 +1,6 @@
 ---
 name: analyze-company
 description: Synthesize collected research sources into a structured company deep dive. Use this skill whenever the user asks to analyze a company, write a deep dive, profile a business, summarize what we know about a company, or wants to understand a business in depth — even if they don't say "analyze" explicitly. Requires sources to already be collected via research-company.
-allowed_tools: Read, Write, Edit, Glob, Grep, Agent
 ---
 
 # analyze-company
@@ -37,19 +36,19 @@ Read `src/research/companies/<company-slug>/sources/sources.md` to understand wh
 
 ### Step 2 — Extract from heavy documents via sub-agents
 
-Spawn sub-agents in parallel using the pre-defined agents in `.agents/agents/`. Each agent handles a distinct, curated set of sources — no overlap. The `transcript-reader` is invoked **twice** (once for earnings/investor-day, once for podcasts) because the two formats reveal different things and combining them dilutes both.
+Spawn sub-agents in parallel following the delegation guidance in `AGENTS.md`. Select the named reader where supported; otherwise instruct a general agent to read its shared role file before extraction. Each agent handles a distinct, curated set of sources — no overlap. The `transcript-reader` is invoked **twice** (once for earnings/investor-day, once for podcasts) because the two formats reveal different things and combining them dilutes both.
 
-| Agent | `subagent_type` | Sources to pass | Format hint to include in prompt |
-|-------|-----------------|-----------------|----------------------------------|
-| Proxy Reader | `proxy-reader` | Most recent proxy + 1 older proxy | — |
-| Annual Report Reader | `annual-report-reader` | 2-3 most recent glossy annual reports (no 10-Ks) | — |
-| Earnings Transcripts | `transcript-reader` | 2-3 most recent earnings calls + investor day | `"format: earnings + investor day"` |
-| Podcast Transcripts | `transcript-reader` | 2-3 highest-signal interviews from `sources/podcasts/` | `"format: long-form podcast interviews"` |
-| News Reader | `news-reader` | Company News, third-party news articles | — |
+| Task | Reader / shared role file | Sources to pass | Format hint to include in prompt |
+|------|---------------------------|-----------------|----------------------------------|
+| Proxy Reader | [proxy-reader](../../agents/proxy-reader.md) | Most recent proxy + 1 older proxy | — |
+| Annual Report Reader | [annual-report-reader](../../agents/annual-report-reader.md) | 2-3 most recent glossy annual reports (no 10-Ks) | — |
+| Earnings Transcripts | [transcript-reader](../../agents/transcript-reader.md) | 2-3 most recent earnings calls + investor day | `"format: earnings + investor day"` |
+| Podcast Transcripts | [transcript-reader](../../agents/transcript-reader.md) | 2-3 highest-signal interviews from `sources/podcasts/` | `"format: long-form podcast interviews"` |
+| News Reader | [news-reader](../../agents/news-reader.md) | Company News, third-party news articles | — |
 
-When spawning each agent, include the **full file paths** of only the curated sources in the prompt, plus the format hint where applicable.
+When spawning each agent, include the **repository root and full file paths** of its shared role file and only the curated sources, plus the format hint where applicable. Batch tasks within the available concurrency limit. Skip tasks with no sources and record those gaps. If delegation is unavailable, perform the same extractions sequentially.
 
-Each agent returns a structured markdown summary with `[filename, p. X-Y]` citations. Use these citations to spot-check specific pages in Step 4 if anything needs more depth or verification.
+Each agent returns a structured markdown summary with `[filename, p. X-Y]` citations. Wait for all required summaries before synthesis; Steps 2 and 3 can proceed in parallel. Use these citations to spot-check specific pages in Step 4 if anything needs more depth or verification.
 
 ### Step 3 — Read fund letters, analysis and scuttlebutt in main context
 

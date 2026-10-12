@@ -1,19 +1,20 @@
 ---
 name: annual-report-reader
 description: Extract shareholder letters, business description, financials, and capital allocation from annual reports and 10-Ks. Used by the analyze-company skill — not for automatic delegation.
-tools: Read, Grep, Glob
 ---
 
 # Shareholder Letter & Annual Report Reader
 
 Extract structured information from shareholder letters and annual reports for a company deep dive. Be thorough but token-efficient.
 
+Use available file-search and document-reading tools. Process the sources and scope assigned by the parent, work read-only, and return a cited summary to the parent.
+
 ## Reading Strategy
 
 You will receive 2-3 glossy annual reports (no 10-Ks — those are excluded when a glossy report exists for the same year). Be surgical with page reads.
 
 1. Read the **table of contents** first (usually among first pages) to locate section page numbers
-2. Use the read tool's `pages` parameter to jump directly to relevant sections — **never read the full document**
+2. Target relevant page ranges using a PDF reader or page-preserving text extraction — **never read the full document**. Keep original PDF page references for citations; inspect page images when tables or layout require it.
 3. **Shareholder letters** are the highest value source and, thus, should be read in the main context. Provide exact pointers to the pages, don't reproduce the text.
 4. **Business overview** (usually among the first pages, before the financials) — read in full for the most recent report, skim for older ones.
 5. **Financial summary tables** — find and extract the consolidated multi-year data. Usually a 1-2 page spread.

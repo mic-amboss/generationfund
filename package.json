@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "extract-markdown": "tsx .claude/skills/research-company/scripts/extract-markdown.ts"
+    "extract-markdown": "tsx .agents/skills/research-company/scripts/extract-markdown.ts"
   },
   "dependencies": {
     "@mozilla/readability": "^0.6.0",

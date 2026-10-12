@@ -1,7 +1,6 @@
 ---
 name: analyze-industry
 description: Synthesize collected research sources into a structured industry deep dive. Use this skill whenever the user asks to analyze an industry, profile a sector's economics, write up a market structure, or wants a holistic qualitative understanding of an industry as a hunting ground for quality compounders — even if they don't say "analyze" explicitly. Requires sources to already be collected via research-industry.
-allowed_tools: Read, Write, Edit, Glob, Grep, Agent
 ---
 
 # analyze-industry
@@ -36,7 +35,7 @@ Read `src/research/industries/<industry-slug>/sources/sources.md` to understand 
 
 ### Step 2 — Extract from heavy documents via sub-agents
 
-Spawn three sub-agents in parallel using the `general-purpose` agent type. Each agent handles a distinct, curated set of sources — no overlap.
+Spawn three general sub-agents through the client's available delegation mechanism, following `AGENTS.md`. Each agent handles a distinct, curated set of sources — no overlap. Batch tasks within the available concurrency limit; if delegation is unavailable, perform the same extractions sequentially.
 
 | Agent | Sources to pass | What to extract |
 |-------|-----------------|-----------------|
@@ -44,7 +43,7 @@ Spawn three sub-agents in parallel using the `general-purpose` agent type. Each 
 | **VC-landscape extractor** | 2-4 VC market maps + thematic essays | Player landscape (logos by category), maturity curve, thematic investment thesis, transformative pressures |
 | **Cross-comparison extractor** | Annual reports of top 3-5 incumbents | Side-by-side margins, ROIC, growth, capital allocation breakdown, organic vs. inorganic growth, balance sheet posture, *and* explicit shareholder-letter quotes that reveal industry-specific operating philosophy |
 
-When spawning each agent, include the **full file paths** of only the curated sources in the prompt, plus the specific extraction questions above.
+When spawning each agent, include the **repository root and full file paths** of only the curated sources, plus the specific extraction questions above. Request concise structured summaries with source and page citations. Wait for all required summaries before synthesis; firsthand reading in Step 3 can proceed in parallel.
 
 ### Step 3 — Read frameworks and quality-investor letters in main context
 
@@ -77,7 +76,7 @@ Apply each framework explicitly. The deep-dive must show the work, not just the 
 
 ### Step 5 — Write the deep dive
 
-Read the template from `.claude/skills/analyze-industry/TEMPLATE.md` and synthesize all extracted information. Save to:
+Read the template from `.agents/skills/analyze-industry/TEMPLATE.md` and synthesize all extracted information. Save to:
 
 ```
 src/research/industries/<industry-slug>/output/industry-deep-dive.md

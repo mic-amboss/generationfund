@@ -1,7 +1,6 @@
 ---
 name: research-industry
 description: Run deep research on an industry — find and collect qualified source material (industry primers, frameworks, fund-letter commentary, VC market maps, trade-association reports, leading-player filings) and save it to the industry's source directory. Use this skill whenever the user asks to research an industry, understand a sector's economics, build a watchlist within a market, or find the structural pattern that produces compounders in a domain — even if they don't explicitly say "research."
-allowed_tools: WebSearch, Fetch, bash(curl:*), bash(playwright-cli:*), bash(npx tsx .claude/skills/research-company/scripts/extract-markdown.ts:*),
 ---
 
 # research-industry
@@ -60,7 +59,7 @@ Navigate each platform's structured pages directly rather than relying on web se
 - **Markel**: annual reports at `https://www.markel.com/about-us/annual-reports`
 - **Fundsmith**: `https://www.fundsmith.co.uk/news-media/`
 - **Akre Capital**: `https://www.akrecapital.com/`
-- Use `WebSearch`: `<industry name> "<investor name>" letter` for individual mentions
+- Use web search: `<industry name> "<investor name>" letter` for individual mentions
 
 ### Long-form podcasts
 - **Colossus**:
@@ -99,9 +98,9 @@ Navigate each platform's structured pages directly rather than relying on web se
 
 ### Trade press
 - Identify the leading 1-2 trade publications for the industry, then navigate their archives directly
-- Use `WebSearch`: `<industry> trade publication` to identify them if unknown
+- Use web search: `<industry> trade publication` to identify them if unknown
 
-Use `WebSearch` for initial discovery, then navigate directly to collect.
+Use web search for initial discovery, then navigate directly to collect.
 
 ## Collecting Sources
 
@@ -123,7 +122,7 @@ playwright-cli -s=research-<company-name> state-load .playwright-cli/auth-state.
 playwright-cli -s=research-<company-name> goto "<url>"
 playwright-cli -s=research-<company-name> pdf > src/research/industries/<industry-slug>/sources/<subfolder>/<filename>.pdf
 playwright-cli -s=research-<company-name> eval "document.documentElement.outerHTML" > /tmp/page.html
-npx tsx .claude/skills/research-company/scripts/extract-markdown.ts \
+npx tsx .agents/skills/research-company/scripts/extract-markdown.ts \
   /tmp/page.html \
   src/research/industries/<industry-slug>/sources/<subfolder>/<filename>.md \
   --url="<source-url>"

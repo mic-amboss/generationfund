@@ -1,7 +1,6 @@
 ---
 name: research-company
 description: Run deep research on a company — find and collect qualified source material (annual reports, proxy filings, earnings transcripts, analyst reports, fund letters, articles, employee sentiment, customer reviews) and save it to the company's source directory. Use this skill whenever the user asks to research a company, gather investment materials, build a research dossier, analyze a stock, or collect sources on a business — even if they don't explicitly say "research."
-allowed_tools: WebSearch, Fetch, bash(curl:*), bash(playwright-cli:*), bash(npx tsx .claude/skills/research-company/scripts/extract-markdown.ts:*),
 ---
 
 # research-company
@@ -41,7 +40,7 @@ Search and collect following source material:
   - sentiment / deep scuttlebutt on Reddit, X/Twitter
 7. **News and investigative reporting** — from reputable or industry-specific sources.
 
-Focus on the last 5 years. Use `WebSearch` for initial discovery, then navigate directly to collect.
+Focus on the last 5 years. Use web search for initial discovery, then navigate directly to collect.
 
 ## Platform Navigation
 
@@ -55,7 +54,7 @@ Navigate these platform's structured pages directly rather than relying on web s
 - **Search**: `https://valueinvestorsclub.com/search/<company-name>`
 
 ### Substack
-- Use `WebSearch` with `site:substack.com <company> <ticker>` — Substack has no central search across publications.
+- Use web search with `site:substack.com <company> <ticker>` — Substack has no central search across publications.
 
 ### Colossus
 - **Search**: `https://www.colossus.com/?s=<company-name>`
@@ -70,7 +69,7 @@ Navigate these platform's structured pages directly rather than relying on web s
 - **Transcript**: `https://www.acquired.fm/episodes/<company-name>#transcript`
 
 ### Fund Letters
-- Use `WebSearch` to find fund letters mentioning the company. Look for the original PDF on the fund's website (e.g. `<fund>.com/letters/`). SA and Insider Monkey often republish excerpts, which are useful for discovering funds that hold the position, but always try to get the original.
+- Use web search to find fund letters mentioning the company. Look for the original PDF on the fund's website (e.g. `<fund>.com/letters/`). SA and Insider Monkey often republish excerpts, which are useful for discovering funds that hold the position, but always try to get the original.
 
 
 ### In Practise
@@ -139,7 +138,7 @@ playwright-cli -s=research-<company-name> pdf > src/research/companies/<company-
 playwright-cli -s=research-<company-name> eval "document.documentElement.outerHTML" > /tmp/page.html
 
 # Convert to clean markdown using the bundled script
-npx tsx .claude/skills/research-company/scripts/extract-markdown.ts \
+npx tsx .agents/skills/research-company/scripts/extract-markdown.ts \
   /tmp/page.html \
   src/research/companies/<company-slug>/sources/<subfolder>/<filename>.md \
   --url="<source-url>"

@@ -1,7 +1,6 @@
 ---
 name: value-company
 description: Build a bespoke valuation model for a generational-compounder candidate and triangulate the expected 10-year IRR via three lenses — bottom-up driver model, destination analysis (Sleep style), and IRR decomposition (Damodaran/Bogle). Use this skill after a deep dive (and ideally a thesis) exists. The output is an Excel workbook plus `valuation.md` with a triangulated IRR and a Reasonable-price verdict (Underwrites @ 15%+ / Sub-target / Pass on price). Models are built bespoke per business-model archetype (vertical SaaS, serial acquirer, network, asset-heavy compounder, insurance/float, branded consumer, platform, media/content, pharma, razor-and-blade), not from a generic template.
-allowed_tools: Read, Write, Edit, Glob, Grep, Bash, Agent
 ---
 
 # value-company
@@ -138,7 +137,7 @@ This is far more useful than WACC sensitivity (which is sideshow noise for compo
 
 ### Step 9 — Write `valuation.md`
 
-Save to `src/research/companies/<slug>/output/valuation.md` using the template at `.claude/skills/value-company/TEMPLATE.md`. Save the workbook to `…/output/valuation.xlsx`.
+Save to `src/research/companies/<slug>/output/valuation.md` using the template at `.agents/skills/value-company/TEMPLATE.md`. Save the workbook to `…/output/valuation.xlsx`.
 
 Writing guidance:
 - Open with executive verdict: triangulated IRR + bucket + the swing variable

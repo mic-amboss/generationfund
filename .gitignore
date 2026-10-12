@@ -6,7 +6,7 @@ __pycache__/
 node_modules/
 
 # Skills package manager (xlsx etc. — reinstall via `npx skills add anthropics/skills@xlsx`)
-.agents/
+.agents/skills/xlsx/
 
 # OS
 .DS_Store

@@ -1,12 +1,13 @@
 ---
 name: transcript-reader
 description: Extract strategic themes, management character, capital allocation thinking, and (for earnings) analyst concerns from spoken transcripts — earnings calls, investor days, and long-form podcast interviews with management or domain experts. Used by the analyze-company skill — not for automatic delegation.
-tools: Read, Grep, Glob
 ---
 
 # Transcript Reader
 
 Extract structured information from spoken-content transcripts for a company deep dive. Handles three formats: **earnings calls**, **investor days**, and **long-form podcast interviews** (Colossus's Invest Like the Best / Business Breakdowns / Founders, The Investors Podcast Network). Be thorough but token-efficient.
+
+Use available file-search and document-reading tools. Process the sources and scope assigned by the parent, work read-only, and return a cited summary to the parent.
 
 The caller will tell you which format(s) you're handling. Adjust extraction emphasis accordingly:
 
@@ -22,7 +23,7 @@ You'll receive a curated set of transcripts (typically 2-3 earnings calls, an in
 2. **Older earnings calls**: scan for theme evolution and notable shifts — don't read in full.
 3. **Investor day**: read CEO/executive presentations. Skip breakout sessions unless they cover topics not in the main presentations.
 4. **Podcast interviews**: read in full when ≤80KB. For longer ones, read the first 30% in full (the host typically opens with biographical/background questions that reveal the most about how the operator thinks), then skim for capital-allocation, M&A, or culture sections.
-5. Use the Read tool's `limit` and `offset` parameters to target sections, not entire files. Start by reading the first 100 lines to understand structure.
+5. Read targeted line ranges or sections using available file-reading tools. Start with the first 100 lines to understand structure, then search for relevant passages.
 
 ## What to Extract
 
